@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+  <rect width="600" height="400" fill="#18181b"/>
+  <!-- Phone Shell -->
+  <rect x="210" y="30" width="180" height="340" rx="28" fill="#27272a" stroke="#52525b" stroke-width="4"/>
+  <!-- Screen -->
+  <rect x="220" y="45" width="160" height="310" rx="20" fill="#09090b"/>
+  <!-- Dynamic Island -->
+  <rect x="270" y="55" width="60" height="12" rx="6" fill="#18181b"/>
+  
+  <!-- Mobile App UI -->
+  <rect x="235" y="80" width="80" height="12" rx="3" fill="#ffffff"/>
+  <circle cx="360" cy="86" r="8" fill="#3b82f6"/>
+  
+  <!-- Card 1 -->
+  <rect x="235" y="105" width="130" height="50" rx="8" fill="#18181b" stroke="#27272a"/>
+  <rect x="245" y="115" width="50" height="8" rx="2" fill="#38bdf8"/>
+  <rect x="245" y="128" width="80" height="6" rx="2" fill="#71717a"/>
+  <rect x="245" y="138" width="60" height="6" rx="2" fill="#52525b"/>
+
+  <!-- Card 2 -->
+  <rect x="235" y="165" width="130" height="65" rx="8" fill="#1e1b4b" stroke="#3730a3"/>
+  <rect x="245" y="175" width="60" height="8" rx="2" fill="#a5b4fc"/>
+  <circle cx="340" cy="180" r="6" fill="#4ade80"/>
+  <rect x="245" y="190" width="100" height="6" rx="2" fill="#c7d2fe"/>
+  <rect x="245" y="202" width="75" height="6" rx="2" fill="#818cf8"/>
+
+  <!-- Bottom Nav -->
+  <rect x="220" y="315" width="160" height="40" rx="0" fill="#18181b"/>
+  <circle cx="250" cy="335" r="5" fill="#38bdf8"/>
+  <circle cx="280" cy="335" r="5" fill="#71717a"/>
+  <circle cx="310" cy="335" r="5" fill="#71717a"/>
+  <circle cx="340" cy="335" r="5" fill="#71717a"/>
+
+  <!-- Accents Left and Right -->
+  <text x="110" y="190" fill="#f4f4f5" font-family="system-ui" font-size="16" font-weight="bold" text-anchor="middle">Responsive</text>
+  <text x="110" y="215" fill="#a1a1aa" font-family="system-ui" font-size="12" text-anchor="middle">Mobile-First Layout</text>
+
+  <text x="490" y="190" fill="#f4f4f5" font-family="system-ui" font-size="16" font-weight="bold" text-anchor="middle">Offline Ready</text>
+  <text x="490" y="215" fill="#a1a1aa" font-family="system-ui" font-size="12" text-anchor="middle">Local Caching</text>
+</svg>

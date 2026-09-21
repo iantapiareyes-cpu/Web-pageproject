@@ -1,0 +1,35 @@
+[
+  {
+    "id": "16e698f4-9540-49f6-a239-802bcff7bf67",
+    "firstName": "Sophia",
+    "lastName": "Lin",
+    "email": "sophia.lin@techcorp.io",
+    "reason": "Partnership",
+    "message": "Hi Ian, we loved your CollabSphere project and would like to explore integrating your synchronization engine into our developer platform.",
+    "submittedAt": "2026-09-18T18:45:58.255Z",
+    "replied": true,
+    "repliedAt": "2026-09-18T18:46:05.551Z"
+  },
+  {
+    "id": "714e4497-9663-42e7-840f-1c0c9222fda8",
+    "firstName": "Marcus",
+    "lastName": "Vance",
+    "email": "marcus@apexcloud.dev",
+    "reason": "Opportunity",
+    "message": "We are opening applications for our Summer Cloud Systems Engineering Fellowship and were very impressed with your distributed edge proxy project.",
+    "submittedAt": "2026-09-18T18:46:03.483Z",
+    "replied": false,
+    "repliedAt": null
+  },
+  {
+    "id": "3c072ed5-f990-4940-8995-80f03b2fb668",
+    "firstName": "Elena",
+    "lastName": "Rostova",
+    "email": "elena@devcommunity.org",
+    "reason": "Question",
+    "message": "Would you be interested in delivering your Node.js and Web Standards workshop as a keynote webinar for our 2,000+ member student chapter next month?",
+    "submittedAt": "2026-09-18T18:46:03.494Z",
+    "replied": false,
+    "repliedAt": null
+  }
+]

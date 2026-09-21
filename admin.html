@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Ian Tapia Reyes</title>
+  <meta name="description" content="Secure administrative dashboard for managing contact submissions, analyzing incoming inquiries, and tracking response rates.">
+  <link rel="stylesheet" href="./styles.css">
+  <!-- Chart.js for interactive analytics -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+  <!-- Site Navigation Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-container">
+      <a href="./index.html" class="brand-logo" id="brandLogo">
+        <span class="brand-badge">IT</span>
+        <span>Ian Tapia Reyes</span>
+      </a>
+
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <nav class="site-nav" id="siteNav" aria-label="Primary navigation">
+        <ul class="nav-list" id="navList">
+          <li><a href="./index.html" class="nav-link" id="navHome">Home</a></li>
+          <li><a href="./media.html" class="nav-link" id="navMedia">Media</a></li>
+          <li><a href="./future.html" class="nav-link" id="navFuture">Future</a></li>
+          <li><a href="./projects.html" class="nav-link" id="navProjects">Projects</a></li>
+          <li><a href="./community.html" class="nav-link" id="navCommunity">Community</a></li>
+          <li><a href="./admin.html" class="nav-link admin-link active" id="navAdmin">Admin</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Body -->
+  <main class="main-content" id="mainContent">
+
+    <!-- View 1: Password-Protected Login Gate (Unauthenticated state) -->
+    <section class="admin-auth-view" id="adminAuthView">
+      <div class="auth-lock-icon" aria-hidden="true">&#128274;</div>
+      <h2>Administrator Authentication</h2>
+      <p>Please enter the administrator access key to review contact messages and telemetric data.</p>
+
+      <div class="form-status-alert alert-error" id="adminLoginError" style="display: none; margin-bottom: 1rem;"></div>
+
+      <form id="adminLoginForm" novalidate>
+        <div class="form-group" style="text-align: left; margin-bottom: 1.25rem;">
+          <label for="adminPassword" class="form-label">Admin Access Key</label>
+          <input 
+            type="password" 
+            id="adminPassword" 
+            class="form-input" 
+            placeholder="Enter secure password..." 
+            autocomplete="current-password"
+            required
+          >
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="adminLoginSubmitBtn" style="width: 100%;">
+          Access Dashboard
+        </button>
+      </form>
+    </section>
+
+    <!-- View 2: Authenticated Dashboard (Rendered once verified) -->
+    <section class="admin-dashboard-view" id="adminDashboardView">
+
+      <!-- Top Status & Action Bar -->
+      <div class="admin-top-bar" id="adminTopBar">
+        <div>
+          <h1 class="page-title" style="font-size: 1.85rem; margin-bottom: 0.25rem;">Contact Administration &amp; Analytics</h1>
+          <div class="admin-status-indicator">
+            <span class="status-dot"></span>
+            <span>Authenticated Session Active &bull; Storage: <code>data/contactReceived.json</code></span>
+          </div>
+        </div>
+
+        <button class="btn btn-secondary" id="adminLogoutBtn">Sign Out</button>
+      </div>
+
+      <!-- Dashboard Summary Values (Calculated dynamically) -->
+      <div class="metrics-grid" id="metricsGrid">
+        <div class="metric-card" id="metricCardTotal">
+          <span class="metric-label">Total Messages</span>
+          <span class="metric-value" id="metricTotal">0</span>
+        </div>
+
+        <div class="metric-card highlight-new" id="metricCardNew">
+          <span class="metric-label">New Messages</span>
+          <span class="metric-value" id="metricNew">0</span>
+        </div>
+
+        <div class="metric-card highlight-replied" id="metricCardReplied">
+          <span class="metric-label">Replied Messages</span>
+          <span class="metric-value" id="metricReplied">0</span>
+        </div>
+
+        <div class="metric-card highlight-rate" id="metricCardRate">
+          <span class="metric-label">Reply Rate</span>
+          <span class="metric-value" id="metricRate">0%</span>
+        </div>
+      </div>
+
+      <!-- Dashboard Chart: Messages by Reason for Contact -->
+      <div class="chart-container-card" id="chartCard">
+        <div class="chart-header">
+          <h2 class="chart-title">Messages by Reason for Contact</h2>
+          <p class="section-subtitle">Categorical distribution of all received submissions.</p>
+        </div>
+        <div class="chart-wrapper">
+          <canvas id="reasonsChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Messages Management Table / List -->
+      <div class="messages-section" id="messagesSection">
+        <div class="messages-header">
+          <div>
+            <h2 class="messages-title">Submissions Log</h2>
+            <p class="section-subtitle">Sorted newest first. Click 'Mark as Replied' to resolve pending inquiries.</p>
+          </div>
+
+          <!-- Filter buttons: All, New, Replied -->
+          <div class="message-filters" id="messageFilters">
+            <button class="filter-chip active" data-filter="all" id="filterAll">All</button>
+            <button class="filter-chip" data-filter="new" id="filterNew">New</button>
+            <button class="filter-chip" data-filter="replied" id="filterReplied">Replied</button>
+          </div>
+        </div>
+
+        <!-- Dynamic List of Messages -->
+        <div class="messages-list" id="adminMessagesList">
+          <div class="empty-state">Loading message submissions...</div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Universal Footer -->
+  <footer class="site-footer" id="siteFooter">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h3 class="footer-brand-title">Ian Tapia Reyes</h3>
+          <p class="footer-brand-desc">
+            Full-stack web software engineer specializing in scalable JavaScript platforms, clean code standards, and robust user experiences.
+          </p>
+        </div>
+
+        <div class="footer-links-group">
+          <div class="footer-nav-col">
+            <h4>Explore</h4>
+            <ul class="footer-links-list">
+              <li><a href="./index.html" class="footer-link">Home</a></li>
+              <li><a href="./media.html" class="footer-link">Media Gallery</a></li>
+              <li><a href="./future.html" class="footer-link">Future Vision</a></li>
+              <li><a href="./projects.html" class="footer-link">Engineering Projects</a></li>
+              <li><a href="./community.html" class="footer-link">Community Mentorship</a></li>
+              <li><a href="./admin.html" class="footer-link">Admin Dashboard</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-nav-col">
+            <h4>Connect</h4>
+            <ul class="footer-links-list">
+              <li><a href="mailto:iantapiareyes@gmail.com" class="footer-link">Email Direct</a></li>
+              <li><a href="https://github.com/iantapiareyes-cpu" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a></li>
+              <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a></li>
+              <li><a href="https://x.com" target="_blank" rel="noopener noreferrer" class="footer-link">X / Twitter</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Ian Tapia Reyes. Built with HTML, CSS, JavaScript, and Node.js on Replit.</p>
+        <button class="back-to-top-btn" id="backToTopBtn" aria-label="Scroll back to top">
+          <span>&uarr; Back to Top</span>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
+  <script src="./admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media Gallery - Ian Tapia Reyes</title>
+  <meta name="description" content="Visual and multimedia showcase of Ian Tapia Reyes featuring engineering projects, video demonstrations, hackathon awards, and social media releases.">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+  <!-- Site Navigation Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-container">
+      <a href="./index.html" class="brand-logo" id="brandLogo">
+        <span class="brand-badge">IT</span>
+        <span>Ian Tapia Reyes</span>
+      </a>
+
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <nav class="site-nav" id="siteNav" aria-label="Primary navigation">
+        <ul class="nav-list" id="navList">
+          <li><a href="./index.html" class="nav-link" id="navHome">Home</a></li>
+          <li><a href="./media.html" class="nav-link active" id="navMedia">Media</a></li>
+          <li><a href="./future.html" class="nav-link" id="navFuture">Future</a></li>
+          <li><a href="./projects.html" class="nav-link" id="navProjects">Projects</a></li>
+          <li><a href="./community.html" class="nav-link" id="navCommunity">Community</a></li>
+          <li><a href="./admin.html" class="nav-link admin-link" id="navAdmin">Admin</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Body -->
+  <main class="main-content" id="mainContent">
+
+    <!-- Page Intro -->
+    <div class="page-intro" id="mediaPageIntro">
+      <h1 class="page-title" id="mediaHeading">Media &amp; Visual Gallery</h1>
+      <p class="page-subtitle">
+        An interactive collection of multimedia artifacts highlighting my engineering practice, live system recordings, hackathon victories, technical presentations, and community discussions.
+      </p>
+    </div>
+
+    <!-- Category Filter Controls -->
+    <div class="gallery-filters" id="galleryFilters">
+      <button class="filter-btn active" data-filter="all" id="filterAll">All Artifacts (10)</button>
+      <button class="filter-btn" data-filter="image" id="filterImages">Images &amp; Diagrams</button>
+      <button class="filter-btn" data-filter="video" id="filterVideos">Videos &amp; Demos</button>
+      <button class="filter-btn" data-filter="social" id="filterSocial">Social &amp; Community</button>
+    </div>
+
+    <!-- Media Gallery Grid (10 interactive cards) -->
+    <div class="media-gallery-grid" id="mediaGalleryGrid">
+
+      <!-- Card 1: Image - Official Engineering Portrait -->
+      <article 
+        class="gallery-card" 
+        id="galleryCard1" 
+        data-type="image" 
+        data-src="./assets/images/student-portrait.svg" 
+        data-title="Official Engineering Portrait" 
+        data-caption="Headshot and professional avatar of Ian Tapia Reyes, symbolizing precision, curiosity, and commitment to software craftsmanship."
+      >
+        <div class="gallery-card-thumb">
+          <span class="gallery-type-badge">Image</span>
+          <img src="./assets/images/student-portrait.svg" alt="Portrait of student Ian Tapia Reyes" loading="lazy">
+        </div>
+        <div class="gallery-card-content">
+          <h2 class="gallery-card-title">Official Engineering Portrait</h2>
+          <p class="gallery-card-caption">
+            Professional developer portrait representing Ian's work in software engineering, distributed systems, and open-source computing.
+          </p>
+          <span class="gallery-card-action">View High-Res &rarr;</span>
+        </div>
+      </article>
+
+      <!-- Card 2: Video - Portfolio Showcase Overview -->
+      <article 
+        class="gallery-card" 
+        id="galleryCard2" 
+        data-type="video" 
+        data-src="./assets/videos/ian-intro.mp4" 
+        data-title="Engineering Portfolio Video Showcase" 
+        data-caption="High-definition video walkthrough summarizing key software engineering achievements and technical development philosophy."
+      >
+        <div class="gallery-card-thumb">
+          <span class="gallery-type-badge">Video</span>
+          <video src="./assets/videos/ian-intro.mp4" muted preload="metadata" poster="./assets/images/project-dashboard.svg"></video>
+        </div>
+        <div class="gallery-card-content">
+          <h2 class="gallery-card-title">Portfolio Video Showcase</h2>
+          <p class="gallery-card-caption">
+            A dynamic video presentation detailing architectural principles, client-server interactions, and project highlights.
+          </p>
+          <span class="gallery-card-action">Play Full Video &rarr;</span>
+        </div>
+      </article>
+
+      <!-- Card 3: Social Media Post Embed -->
+      <article 
+        class="gallery-card" 
+        id="galleryCard3" 
+        data-type="social" 
+        data-src="./assets/images/social-post-card.svg" 
+        data-link="https://github.com/iantapiareyes-cpu/Web-pageproject-" 
+        data-title="Open-Source Launch Announcement" 
+        data-caption="Ian's viral social update announcing the open-source repository release, reaching over 14,000 views across the developer ecosystem."
+      >
+        <div class="gallery-card-thumb">
+          <span class="gallery-type-badge">Social Post</span>
+          <img src="./assets/images/social-post-card.svg" alt="Social post update by Ian Tapia Reyes" loading="lazy">
+        </div>
+        <div class="gallery-card-content">
+          <h2 class="gallery-card-title">Open-Source Launch Announcement</h2>
+          <p class="gallery-card-caption">
+            Social media update sharing the release of the Replit full-stack project, receiving 890+ likes and active community engagement.
+          </p>
+          <span class="gallery-card-action">Open Post Preview &rarr;</span>
+        </div>
+      </article>
+
+      <!-- Card 4: Video - Live Project System Demo -->
+      <article 
+        class="gallery-card" 
+        id="galleryCard4" 
+        data-type="video" 
+        data-src="./assets/videos/project-demo.mp4" 
+        data-title="Live System Runtime &amp; Latency Demonstration" 
+        data-caption="Screen capture recording demonstrating real-time API response benchmarks and form state persistence."
+      >
+        <div class="gallery-card-thumb">
+          <span class="gallery-type-badge">Video</span>
+          <video src="./assets/videos/project-demo.mp4" muted preload="metadata" poster="./assets/images/project-dashboard.svg"></video>
+        </div>
+        <div class="gallery-card-content">
+          <h2 class="gallery-card-title">Live System Demonstration</h2>
+          <p class="gallery-card-caption">
+            Interactive recording demonstrating client-server synchronization, instant JSON persistence, and fast query execution.
+          </p>
+          <span class="gallery-card-action">Play Full Video &rarr;</span>
+        </div>
+      </article>
+
+      <!-- Card 5: Image - Development Workstation -->
+      <article 
+        class="gallery-card" 
+        id="galleryCard5" 
+        data-type="image" 
+        data-src="./assets/images/workspace-setup.svg" 
+        data-title="Dual-Display Engineering Workstation" 
+        data-caption="Ian's physical and digital workspace configured for rapid iteration, code inspection, and live server telemetry."
+      >
+        <div class="gallery-card-thumb">
+          <span class="gallery-type-badge">Image</span>
+          <img src="./assets/images/workspace-setup.svg" alt="Dual monitor development workspace" loading="lazy">
+        </div>
+        <div class="gallery-card-content">
+          <h2 class="gallery-card-title">Dual-Display Workstation</h2>
+          <p class="gallery-card-caption">
+            High-efficiency developer workspace featuring hot-reloading dev servers, terminal multiplexers, and responsive test suites.
+          </p>
+          <span class="gallery-card-action">View High-Res &rarr;</span>
+        </div>
+      </article>
+
+      <!-- Card 6: Image - Hackathon Victory -->
+      <article 
+        class="gallery-card" 
+        id="galleryCard6" 
+        data-type="image" 
+        data-src="./assets/images/hackathon.svg" 
+        data-title="Hackathon 2026 First Place Award" 
+        data-caption="Award certificate and team architecture diagram celebrating Ian's first-place victory for CollabSphere."
+      >
+        <div class="gallery-card-thumb">
+          <span class="gallery-type-badge">Image</span>
+          <img src="./assets/images/hackathon.svg" alt="Hackathon first place celebration" loading="lazy">
+        </div>
+        <div class="gallery-card-content">
+          <h2 class="gallery-card-title">Hackathon 2026 First Place</h2>
+          <p class="gallery-card-caption">
+            Lead architect for 'CollabSphere', building an offline-first collaborative code canvas with instant conflict resolution in 36 hours.
+          </p>
+          <span class="gallery-card-action">View High-Res &rarr;</span>
+        </div>
+      </article>
+
+      <!-- Card 7: Image - Mentorship Workshop -->
+      <article 
+        class="gallery-card" 
+        id="galleryCard7" 
+        data-type="image" 
+        data-src="./assets/images/community-workshop.svg" 
+        data-title="Node.js &amp; Web Standards Workshop" 
+        data-caption="Live interactive tech talk led by Ian, instructing students on building modular servers and RESTful APIs."
+      >
+        <div class="gallery-card-thumb">
+          <span class="gallery-type-badge">Image</span>
+          <img src="./assets/images/community-workshop.svg" alt="Ian instructing students at tech workshop" loading="lazy">
+        </div>
+        <div class="gallery-card-content">
+          <h2 class="gallery-card-title">Web Standards Tech Workshop</h2>
+          <p class="gallery-card-caption">
+            Ian presenting full-stack design patterns to over 40 aspiring engineers during a weekend university workshop.
+          </p>
+          <span class="gallery-card-action">View High-Res &rarr;</span>
+        </div>
+      </article>
+
+      <!-- Card 8: Image - Systems Lab Session -->
+      <article 
+        class="gallery-card" 
+        id="galleryCard8" 
+        data-type="image" 
+        data-src="./assets/images/campus-lab.svg" 
+        data-title="Systems &amp; Network Performance Lab" 
+        data-caption="Hardware testbed and network benchmarking station where Ian tests high-concurrency API performance."
+      >
+        <div class="gallery-card-thumb">
+          <span class="gallery-type-badge">Image</span>
+          <img src="./assets/images/campus-lab.svg" alt="Network systems laboratory" loading="lazy">
+        </div>
+        <div class="gallery-card-content">
+          <h2 class="gallery-card-title">Systems &amp; Network Lab</h2>
+          <p class="gallery-card-caption">
+            Hardware testing environment measuring packet throughput, TCP connection pooling, and multi-tenant isolation.
+          </p>
+          <span class="gallery-card-action">View High-Res &rarr;</span>
+        </div>
+      </article>
+
+      <!-- Card 9: Image - GitHub Code Review -->
+      <article 
+        class="gallery-card" 
+        id="galleryCard9" 
+        data-type="image" 
+        data-src="./assets/images/code-review.svg" 
+        data-title="Pull Request #42 Code Review" 
+        data-caption="Thorough architectural pull request review and performance validation ensuring clean Git commit hygiene."
+      >
+        <div class="gallery-card-thumb">
+          <span class="gallery-type-badge">Image</span>
+          <img src="./assets/images/code-review.svg" alt="GitHub pull request code review" loading="lazy">
+        </div>
+        <div class="gallery-card-content">
+          <h2 class="gallery-card-title">Pull Request #42 Review</h2>
+          <p class="gallery-card-caption">
+            Collaborative Git inspection verifying distributed caching patterns and eliminating memory bottlenecks before deployment.
+          </p>
+          <span class="gallery-card-action">View High-Res &rarr;</span>
+        </div>
+      </article>
+
+      <!-- Card 10: Image - Mobile UI Design -->
+      <article 
+        class="gallery-card" 
+        id="galleryCard10" 
+        data-type="image" 
+        data-src="./assets/images/mobile-app.svg" 
+        data-title="Mobile-First Interface Architecture" 
+        data-caption="Responsive touch-optimized UI mockups designed for fluid interaction on smartphones and tablets."
+      >
+        <div class="gallery-card-thumb">
+          <span class="gallery-type-badge">Image</span>
+          <img src="./assets/images/mobile-app.svg" alt="Mobile user interface mockups" loading="lazy">
+        </div>
+        <div class="gallery-card-content">
+          <h2 class="gallery-card-title">Mobile-First Interface</h2>
+          <p class="gallery-card-caption">
+            Adaptive design layouts with touch targets exceeding 44px, offline caching strategies, and snappy micro-animations.
+          </p>
+          <span class="gallery-card-action">View High-Res &rarr;</span>
+        </div>
+      </article>
+
+    </div>
+
+  </main>
+
+  <!-- Lightbox Modal Viewer -->
+  <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="lightboxTitle">
+    <div class="lightbox-content" id="lightboxContent">
+      <button class="lightbox-close-btn" id="lightboxClose" aria-label="Close lightbox">&times;</button>
+      <div class="lightbox-media-holder" id="lightboxMediaHolder"></div>
+      <div class="lightbox-details">
+        <h3 class="lightbox-title" id="lightboxTitle">Media Title</h3>
+        <p class="lightbox-caption" id="lightboxCaption">Media detailed caption description.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Universal Footer -->
+  <footer class="site-footer" id="siteFooter">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h3 class="footer-brand-title">Ian Tapia Reyes</h3>
+          <p class="footer-brand-desc">
+            Full-stack web software engineer specializing in scalable JavaScript platforms, clean code standards, and robust user experiences.
+          </p>
+        </div>
+
+        <div class="footer-links-group">
+          <div class="footer-nav-col">
+            <h4>Explore</h4>
+            <ul class="footer-links-list">
+              <li><a href="./index.html" class="footer-link">Home</a></li>
+              <li><a href="./media.html" class="footer-link">Media Gallery</a></li>
+              <li><a href="./future.html" class="footer-link">Future Vision</a></li>
+              <li><a href="./projects.html" class="footer-link">Engineering Projects</a></li>
+              <li><a href="./community.html" class="footer-link">Community Mentorship</a></li>
+              <li><a href="./admin.html" class="footer-link">Admin Dashboard</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-nav-col">
+            <h4>Connect</h4>
+            <ul class="footer-links-list">
+              <li><a href="mailto:iantapiareyes@gmail.com" class="footer-link">Email Direct</a></li>
+              <li><a href="https://github.com/iantapiareyes-cpu" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a></li>
+              <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a></li>
+              <li><a href="https://x.com" target="_blank" rel="noopener noreferrer" class="footer-link">X / Twitter</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Ian Tapia Reyes. Built with HTML, CSS, JavaScript, and Node.js on Replit.</p>
+        <button class="back-to-top-btn" id="backToTopBtn" aria-label="Scroll back to top">
+          <span>&uarr; Back to Top</span>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>

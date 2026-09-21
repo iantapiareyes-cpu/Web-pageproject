@@ -1,0 +1,8 @@
+{
+  "name": "Web Page Project",
+  "description": "Full-stack personal website and portfolio with 6 interactive pages, contact persistence, and password-protected admin dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

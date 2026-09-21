@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="hGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4f46e5"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="#18181b"/>
+  <rect x="30" y="30" width="540" height="340" rx="16" fill="url(#hGrad)" opacity="0.95"/>
+  
+  <!-- Content Card Inside -->
+  <rect x="50" y="50" width="500" height="300" rx="12" fill="#09090b" opacity="0.88"/>
+  
+  <!-- Trophy / Award Icon -->
+  <g transform="translate(70, 75)">
+    <circle cx="30" cy="30" r="26" fill="#fbbf24" opacity="0.2"/>
+    <circle cx="30" cy="30" r="20" fill="#f59e0b"/>
+    <path d="M22 24 H38 V32 C38 36.5 34.5 40 30 40 C25.5 40 22 36.5 22 32 Z" fill="#ffffff"/>
+  </g>
+
+  <text x="140" y="95" fill="#fef08a" font-family="system-ui" font-size="12" font-weight="700" letter-spacing="1">FIRST PLACE &bull; HACKATHON 2026</text>
+  <text x="140" y="125" fill="#ffffff" font-family="system-ui" font-size="22" font-weight="bold">CollabSphere - Real-time Dev Sync</text>
+  
+  <text x="70" y="170" fill="#d4d4d8" font-family="system-ui" font-size="14" width="460">
+    Led the technical architecture team of 4 engineers building an offline-first
+  </text>
+  <text x="70" y="195" fill="#d4d4d8" font-family="system-ui" font-size="14">
+    collaborative code canvas with instant conflict resolution and live AST validation.
+  </text>
+
+  <!-- Team Member badges -->
+  <rect x="70" y="230" width="130" height="36" rx="18" fill="#27272a" stroke="#3f3f46"/>
+  <circle cx="88" cy="248" r="12" fill="#3b82f6"/>
+  <text x="88" y="252" fill="#ffffff" font-family="system-ui" font-size="10" font-weight="bold" text-anchor="middle">IT</text>
+  <text x="108" y="253" fill="#f4f4f5" font-family="system-ui" font-size="12">Ian (Lead)</text>
+
+  <rect x="210" y="230" width="120" height="36" rx="18" fill="#27272a" stroke="#3f3f46"/>
+  <circle cx="228" cy="248" r="12" fill="#10b981"/>
+  <text x="228" y="252" fill="#ffffff" font-family="system-ui" font-size="10" font-weight="bold" text-anchor="middle">MK</text>
+  <text x="248" y="253" fill="#f4f4f5" font-family="system-ui" font-size="12">Maya (UI)</text>
+
+  <rect x="340" y="230" width="130" height="36" rx="18" fill="#27272a" stroke="#3f3f46"/>
+  <circle cx="358" cy="248" r="12" fill="#ec4899"/>
+  <text x="358" y="252" fill="#ffffff" font-family="system-ui" font-size="10" font-weight="bold" text-anchor="middle">DR</text>
+  <text x="378" y="253" fill="#f4f4f5" font-family="system-ui" font-size="12">David (API)</text>
+
+  <!-- Tech Badges -->
+  <rect x="70" y="285" width="80" height="22" rx="4" fill="#312e81"/>
+  <text x="110" y="300" fill="#a5b4fc" font-family="monospace" font-size="11" text-anchor="middle">WebSockets</text>
+  <rect x="160" y="285" width="60" height="22" rx="4" fill="#1e3a8a"/>
+  <text x="190" y="300" fill="#93c5fd" font-family="monospace" font-size="11" text-anchor="middle">Node.js</text>
+  <rect x="230" y="285" width="70" height="22" rx="4" fill="#064e3b"/>
+  <text x="265" y="300" fill="#6ee7b7" font-family="monospace" font-size="11" text-anchor="middle">Express</text>
+</svg>

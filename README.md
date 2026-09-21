@@ -1,11 +1,27 @@
-<div align="center">
+# Web-pageproject-
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+A modern, responsive web application and developer showcase built with React 19, Vite, TypeScript, and Tailwind CSS.
 
-  <h1>Built with AI Studio</h2>
+## Features
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+- **Project Showcase**: Curated directory of web applications, tools, and technical experiments with category filtering.
+- **Interactive Roadmap Planner**: Persistent local scratchpad for brainstorming, planning milestones, and tracking feature goals.
+- **Competency Matrix**: Overview of frontend, backend, and DevOps toolchain.
+- **Direct Connect**: Integrated contact module with direct GitHub and email links.
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+## Tech Stack
 
-</div>
+- **Framework**: React 19 + TypeScript
+- **Bundler**: Vite
+- **Styling**: Tailwind CSS v4
+- **Icons**: Lucide React
+- **Runtime**: Node.js 22
+
+## Getting Started
+
+```bash
+npm install
+npm run dev
+```
+
+The application runs on port `3000` bound to `0.0.0.0`.

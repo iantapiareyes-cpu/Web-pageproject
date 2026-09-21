@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ian Tapia Reyes - Full-Stack Web Engineer &amp; Portfolio</title>
+  <meta name="description" content="Official personal web portfolio of Ian Tapia Reyes featuring full-stack web engineering projects, technical media, future trajectory, and interactive contact.">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+  <!-- Site Navigation Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-container">
+      <a href="./index.html" class="brand-logo" id="brandLogo">
+        <span class="brand-badge">IT</span>
+        <span>Ian Tapia Reyes</span>
+      </a>
+
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <nav class="site-nav" id="siteNav" aria-label="Primary navigation">
+        <ul class="nav-list" id="navList">
+          <li><a href="./index.html" class="nav-link active" id="navHome">Home</a></li>
+          <li><a href="./media.html" class="nav-link" id="navMedia">Media</a></li>
+          <li><a href="./future.html" class="nav-link" id="navFuture">Future</a></li>
+          <li><a href="./projects.html" class="nav-link" id="navProjects">Projects</a></li>
+          <li><a href="./community.html" class="nav-link" id="navCommunity">Community</a></li>
+          <li><a href="./admin.html" class="nav-link admin-link" id="navAdmin">Admin</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Body -->
+  <main class="main-content" id="mainContent">
+
+    <!-- Hero Section (Above the fold with Photo, H1 Name, & Exactly 3 Paragraph Bio) -->
+    <section class="hero-section" id="heroSection">
+      <div class="hero-portrait-wrap" id="heroPortraitWrap">
+        <img 
+          src="./assets/images/student-portrait.svg" 
+          alt="Portrait of Ian Tapia Reyes, Full-Stack Web Engineer" 
+          class="hero-portrait" 
+          id="studentPhoto"
+          width="360"
+          height="360"
+        >
+      </div>
+
+      <div class="hero-text-wrap" id="heroTextWrap">
+        <span class="hero-eyebrow">Full-Stack Software Engineer &amp; Builder</span>
+        <h1 class="hero-name" id="studentName">Ian Tapia Reyes</h1>
+
+        <!-- Biography Section: Explicitly contains EXACTLY 3 <p> elements -->
+        <div class="hero-bio-container" id="biographySection">
+          <p id="bioParagraph1">
+            Hello! I am Ian Tapia Reyes, an enthusiastic full-stack software engineer dedicated to designing performant web applications, distributed systems, and intuitive user experiences. Driven by a rigorous focus on web standards and clean code architecture, I build scalable server-side endpoints and responsive client interfaces that solve real-world problems.
+          </p>
+          <p id="bioParagraph2">
+            Throughout my engineering journey, I have developed production-ready platforms using modern JavaScript, Node.js, Express, and cloud computing frameworks. Whether architecting database synchronization models or optimizing client-side rendering pipelines, I continuously experiment with modern web platforms to make computing more accessible and responsive.
+          </p>
+          <p id="bioParagraph3">
+            Beyond writing code, I am an active open-source contributor and peer mentor who values technical clarity and collaborative team workflows. I take pride in documenting systems thoroughly, reviewing code with diligence, and participating in hackathons and technical workshops that challenge conventional paradigms.
+          </p>
+        </div>
+
+        <div class="hero-actions" id="heroActions">
+          <a href="#contactSection" class="btn btn-primary" id="getInTouchBtn">Get In Touch</a>
+          <a href="./projects.html" class="btn btn-secondary" id="exploreWorkBtn">Explore Projects</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Media Showcase (At least two media items: Image + Video) -->
+    <section class="home-media-section" id="featuredMediaSection">
+      <div class="section-header">
+        <h2 class="section-title" id="featuredMediaTitle">Featured Work &amp; Engineering Studio</h2>
+        <p class="section-subtitle">A glimpse into my development workstation and engineering demos.</p>
+      </div>
+
+      <div class="media-grid-two" id="featuredMediaGrid">
+        <!-- Media Item 1: High quality developer workstation illustration -->
+        <article class="featured-media-card" id="mediaCardWorkstation">
+          <div class="featured-media-frame">
+            <img 
+              src="./assets/images/workspace-setup.svg" 
+              alt="Ian Tapia Reyes software engineering workstation and dual-monitor development environment"
+              loading="lazy"
+            >
+          </div>
+          <div class="featured-card-body">
+            <h3 class="featured-card-title">Development Workstation</h3>
+            <p class="featured-card-caption">
+              My multi-screen development environment configured with Vim keybindings, Node.js runtime tools, and live responsive browser debugging instances.
+            </p>
+          </div>
+        </article>
+
+        <!-- Media Item 2: Native HTML5 MP4 Video Demo -->
+        <article class="featured-media-card" id="mediaCardVideo">
+          <div class="featured-media-frame">
+            <video 
+              src="./assets/videos/ian-intro.mp4" 
+              controls 
+              preload="metadata"
+              poster="./assets/images/project-dashboard.svg"
+              aria-label="Ian Tapia Reyes portfolio and technical showcase video"
+            >
+              Your browser does not support HTML5 video.
+            </video>
+          </div>
+          <div class="featured-card-body">
+            <h3 class="featured-card-title">Portfolio Showcase Video</h3>
+            <p class="featured-card-caption">
+              A high-definition overview highlighting core engineering principles, full-stack application logic, and systems architecture.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact & Social Media Section -->
+    <section class="home-contact-section" id="contactSection">
+      <div class="section-header">
+        <h2 class="section-title" id="contactSectionTitle">Connect &amp; Collaborate</h2>
+        <p class="section-subtitle">Send a direct message or connect across social channels.</p>
+      </div>
+
+      <div class="contact-layout" id="contactLayout">
+        <!-- Social Channels & Direct Contact Links -->
+        <div class="contact-info-panel" id="contactInfoPanel">
+          <p class="contact-info-lead">
+            I welcome opportunities for software internships, collaborative research, open-source projects, or technical conversations. Feel free to reach out directly through any of the channels below.
+          </p>
+
+          <div class="direct-channels" id="directChannels">
+            <a href="mailto:iantapiareyes@gmail.com" class="channel-card" id="emailChannelLink">
+              <div class="channel-icon">@</div>
+              <div class="channel-text">
+                <strong>Email Address</strong>
+                <span>iantapiareyes@gmail.com</span>
+              </div>
+            </a>
+
+            <a href="https://github.com/iantapiareyes-cpu" target="_blank" rel="noopener noreferrer" class="channel-card" id="githubChannelLink">
+              <div class="channel-icon">GH</div>
+              <div class="channel-text">
+                <strong>GitHub Profile</strong>
+                <span>github.com/iantapiareyes-cpu</span>
+              </div>
+            </a>
+
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="channel-card" id="linkedinChannelLink">
+              <div class="channel-icon">in</div>
+              <div class="channel-text">
+                <strong>LinkedIn Network</strong>
+                <span>Connect with Ian Tapia Reyes</span>
+              </div>
+            </a>
+
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="channel-card" id="xChannelLink">
+              <div class="channel-icon">𝕏</div>
+              <div class="channel-text">
+                <strong>X / Twitter</strong>
+                <span>@iantapiareyes_dev</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Contact Form (with First Name, Last Name, Email, Reason dropdown, Message, Submit) -->
+        <div class="contact-form-container" id="contactFormContainer">
+          <div class="form-status-alert" id="formStatusAlert" role="alert"></div>
+
+          <form class="contact-form" id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName" class="form-label">First Name <span class="required-indicator">*</span></label>
+                <input 
+                  type="text" 
+                  id="firstName" 
+                  name="firstName" 
+                  class="form-input" 
+                  placeholder="e.g. Alex" 
+                  required
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="lastName" class="form-label">Last Name <span class="required-indicator">*</span></label>
+                <input 
+                  type="text" 
+                  id="lastName" 
+                  name="lastName" 
+                  class="form-input" 
+                  placeholder="e.g. Morgan" 
+                  required
+                >
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email" class="form-label">Email Address <span class="required-indicator">*</span></label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                class="form-input" 
+                placeholder="e.g. alex.morgan@example.com" 
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="reason" class="form-label">Reason for Contact <span class="required-indicator">*</span></label>
+              <select id="reason" name="reason" class="form-select" required>
+                <option value="" disabled selected>Please select a topic...</option>
+                <option value="Comment">Comment</option>
+                <option value="Question">Question</option>
+                <option value="Partnership">Partnership</option>
+                <option value="Opportunity">Opportunity</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message" class="form-label">Message <span class="required-indicator">*</span></label>
+              <textarea 
+                id="message" 
+                name="message" 
+                class="form-textarea" 
+                placeholder="Write your message here..." 
+                rows="4" 
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="submitBtn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Universal Footer -->
+  <footer class="site-footer" id="siteFooter">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h3 class="footer-brand-title">Ian Tapia Reyes</h3>
+          <p class="footer-brand-desc">
+            Full-stack web software engineer specializing in scalable JavaScript platforms, clean code standards, and robust user experiences.
+          </p>
+        </div>
+
+        <div class="footer-links-group">
+          <div class="footer-nav-col">
+            <h4>Explore</h4>
+            <ul class="footer-links-list">
+              <li><a href="./index.html" class="footer-link">Home</a></li>
+              <li><a href="./media.html" class="footer-link">Media Gallery</a></li>
+              <li><a href="./future.html" class="footer-link">Future Vision</a></li>
+              <li><a href="./projects.html" class="footer-link">Engineering Projects</a></li>
+              <li><a href="./community.html" class="footer-link">Community Mentorship</a></li>
+              <li><a href="./admin.html" class="footer-link">Admin Dashboard</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-nav-col">
+            <h4>Connect</h4>
+            <ul class="footer-links-list">
+              <li><a href="mailto:iantapiareyes@gmail.com" class="footer-link">Email Direct</a></li>
+              <li><a href="https://github.com/iantapiareyes-cpu" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a></li>
+              <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a></li>
+              <li><a href="https://x.com" target="_blank" rel="noopener noreferrer" class="footer-link">X / Twitter</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Ian Tapia Reyes. Built with HTML, CSS, JavaScript, and Node.js on Replit.</p>
+        <button class="back-to-top-btn" id="backToTopBtn" aria-label="Scroll back to top">
+          <span>&uarr; Back to Top</span>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>
