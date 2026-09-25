@@ -203,6 +203,98 @@ app.patch('/api/admin/messages/:id/replied', requireAdminAuth, (req, res) => {
   }
 });
 
+// POST /api/upload-featured-video - Upload/replace football O-Line video
+app.post(
+  '/api/upload-featured-video',
+  express.raw({ type: ['video/*', 'application/octet-stream'], limit: '250mb' }),
+  (req, res) => {
+    try {
+      if (!req.body || req.body.length === 0) {
+        return res.status(400).json({ error: 'No video payload received.' });
+      }
+      const videosDir = path.join(__dirname, 'assets', 'videos');
+      if (!fs.existsSync(videosDir)) {
+        fs.mkdirSync(videosDir, { recursive: true });
+      }
+      const filePath = path.join(videosDir, 'football-trench.mp4');
+      fs.writeFileSync(filePath, req.body);
+      const filePath2 = path.join(videosDir, 'west-hills-high-school.mp4');
+      fs.writeFileSync(filePath2, req.body);
+      console.log(`Saved football video (${req.body.length} bytes) to ${filePath} and ${filePath2}`);
+
+      return res.status(200).json({
+        success: true,
+        filename: 'West-Hills-High-School.MP4',
+        url: './assets/videos/west-hills-high-school.mp4?v=' + Date.now(),
+        message: 'Football O-Line video (West-Hills-High-School.MP4) successfully updated!'
+      });
+    } catch (err) {
+      console.error('Failed to save featured video:', err);
+      return res.status(500).json({ error: 'Failed to write video file on server.' });
+    }
+  }
+);
+
+// POST /api/upload-football-photo - Upload/replace football O-Line photo
+app.post(
+  '/api/upload-football-photo',
+  express.raw({ type: ['image/*', 'application/octet-stream'], limit: '50mb' }),
+  (req, res) => {
+    try {
+      if (!req.body || req.body.length === 0) {
+        return res.status(400).json({ error: 'No image payload received.' });
+      }
+      const imagesDir = path.join(__dirname, 'assets', 'images');
+      if (!fs.existsSync(imagesDir)) {
+        fs.mkdirSync(imagesDir, { recursive: true });
+      }
+      const filePath = path.join(imagesDir, 'west-hills-football.jpg');
+      fs.writeFileSync(filePath, req.body);
+      console.log(`Saved football image (${req.body.length} bytes) to ${filePath}`);
+
+      return res.status(200).json({
+        success: true,
+        filename: 'west-hills-football.jpg',
+        url: './assets/images/west-hills-football.jpg?v=' + Date.now(),
+        message: 'Football O-Line photo successfully updated!'
+      });
+    } catch (err) {
+      console.error('Failed to save football image:', err);
+      return res.status(500).json({ error: 'Failed to write image file on server.' });
+    }
+  }
+);
+
+// POST /api/upload-construction-video - Upload/replace Future Construction Worker video
+app.post(
+  '/api/upload-construction-video',
+  express.raw({ type: ['video/*', 'application/octet-stream'], limit: '250mb' }),
+  (req, res) => {
+    try {
+      if (!req.body || req.body.length === 0) {
+        return res.status(400).json({ error: 'No video payload received.' });
+      }
+      const videosDir = path.join(__dirname, 'assets', 'videos');
+      if (!fs.existsSync(videosDir)) {
+        fs.mkdirSync(videosDir, { recursive: true });
+      }
+      const filePath = path.join(videosDir, 'construction-worker.mp4');
+      fs.writeFileSync(filePath, req.body);
+      console.log(`Saved construction worker video (${req.body.length} bytes) to ${filePath}`);
+
+      return res.status(200).json({
+        success: true,
+        filename: 'construction-worker.mp4',
+        url: './assets/videos/construction-worker.mp4?v=' + Date.now(),
+        message: 'Construction worker video successfully updated!'
+      });
+    } catch (err) {
+      console.error('Failed to save construction video:', err);
+      return res.status(500).json({ error: 'Failed to write video file on server.' });
+    }
+  }
+);
+
 // Serve static assets and project files
 app.use(express.static(__dirname));
 

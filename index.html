@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ian Tapia Reyes - Full-Stack Web Engineer &amp; Portfolio</title>
-  <meta name="description" content="Official personal web portfolio of Ian Tapia Reyes featuring full-stack web engineering projects, technical media, future trajectory, and interactive contact.">
+  <title>Ian Tapia Reyes - Football, Videos &amp; Fun Facts</title>
+  <meta name="description" content="Personal website of Ian Tapia Reyes featuring football on the offensive line at tackle and center, videos, and fun facts.">
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
@@ -28,11 +28,8 @@
       <nav class="site-nav" id="siteNav" aria-label="Primary navigation">
         <ul class="nav-list" id="navList">
           <li><a href="./index.html" class="nav-link active" id="navHome">Home</a></li>
-          <li><a href="./media.html" class="nav-link" id="navMedia">Media</a></li>
+          <li><a href="./media.html" class="nav-link" id="navMedia">Videos</a></li>
           <li><a href="./future.html" class="nav-link" id="navFuture">Future</a></li>
-          <li><a href="./projects.html" class="nav-link" id="navProjects">Projects</a></li>
-          <li><a href="./community.html" class="nav-link" id="navCommunity">Community</a></li>
-          <li><a href="./admin.html" class="nav-link admin-link" id="navAdmin">Admin</a></li>
         </ul>
       </nav>
     </div>
@@ -41,138 +38,259 @@
   <!-- Main Content Body -->
   <main class="main-content" id="mainContent">
 
-    <!-- Hero Section (Above the fold with Photo, H1 Name, & Exactly 3 Paragraph Bio) -->
+    <!-- Hero Section with Photo, Name & Personal Intro -->
     <section class="hero-section" id="heroSection">
       <div class="hero-portrait-wrap" id="heroPortraitWrap">
         <img 
-          src="./assets/images/student-portrait.svg" 
-          alt="Portrait of Ian Tapia Reyes, Full-Stack Web Engineer" 
+          src="./assets/images/ian-photo.jpg" 
+          alt="Portrait of Ian Tapia Reyes" 
           class="hero-portrait" 
           id="studentPhoto"
           width="360"
           height="360"
         >
+        <div class="portrait-actions" id="portraitActions">
+          <label for="photoFileInput" class="photo-upload-label" id="photoUploadLabel" title="Upload or change with your personal photo">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+            <span>Change / Upload Photo</span>
+          </label>
+          <input type="file" id="photoFileInput" accept="image/*" class="sr-only" aria-label="Upload your personal photo">
+        </div>
       </div>
 
       <div class="hero-text-wrap" id="heroTextWrap">
-        <span class="hero-eyebrow">Full-Stack Software Engineer &amp; Builder</span>
+        <span class="hero-eyebrow">Welcome To My World &bull; Creator, Tech Explorer &amp; Athlete</span>
         <h1 class="hero-name" id="studentName">Ian Tapia Reyes</h1>
 
-        <!-- Biography Section: Explicitly contains EXACTLY 3 <p> elements -->
+        <!-- Quick Interest Badges -->
+        <div class="hero-interest-pills" id="heroInterestPills">
+          <span class="interest-pill">🏈 Football (O-Line: Tackle &amp; Center)</span>
+          <span class="interest-pill">🎬 YouTube &amp; Videos</span>
+          <span class="interest-pill">⛰️ Mountain Ranch Owner</span>
+          <span class="interest-pill">🏖️ Cancun Summer Traveler</span>
+        </div>
+
+        <!-- Personal Introduction -->
         <div class="hero-bio-container" id="biographySection">
           <p id="bioParagraph1">
-            Hello! I am Ian Tapia Reyes, an enthusiastic full-stack software engineer dedicated to designing performant web applications, distributed systems, and intuitive user experiences. Driven by a rigorous focus on web standards and clean code architecture, I build scalable server-side endpoints and responsive client interfaces that solve real-world problems.
+            Hey there, I'm Ian! Welcome to my personal site. Forget the boring corporate resumes—this page is all about who I actually am, what I love doing every day, the sports I play, and some fun facts about my life.
           </p>
           <p id="bioParagraph2">
-            Throughout my engineering journey, I have developed production-ready platforms using modern JavaScript, Node.js, Express, and cloud computing frameworks. Whether architecting database synchronization models or optimizing client-side rendering pipelines, I continuously experiment with modern web platforms to make computing more accessible and responsive.
+            I play football on the offensive line as both a tackle and a center, anchoring the line and protecting the play. When I'm not on the field, I love recording videos for YouTube, spending time up at my ranch in the mountains, and traveling with family like my summer trip to Cancun.
           </p>
           <p id="bioParagraph3">
-            Beyond writing code, I am an active open-source contributor and peer mentor who values technical clarity and collaborative team workflows. I take pride in documenting systems thoroughly, reviewing code with diligence, and participating in hackathons and technical workshops that challenge conventional paradigms.
+            Take a look below to see how I play football on the offensive line as a tackle and center, and check out some cool fun facts and photos!
           </p>
         </div>
 
         <div class="hero-actions" id="heroActions">
-          <a href="#contactSection" class="btn btn-primary" id="getInTouchBtn">Get In Touch</a>
-          <a href="./projects.html" class="btn btn-secondary" id="exploreWorkBtn">Explore Projects</a>
+          <a href="#sportsSection" class="btn btn-primary" id="sportsBtn">🏈 Football &amp; Positions</a>
+          <a href="#funFactsSection" class="btn btn-secondary" id="exploreFunFactsBtn">⭐ Fun Facts About Me</a>
+          <a href="./media.html" class="btn btn-secondary" id="heroMediaBtn">🎬 Watch Videos</a>
         </div>
       </div>
     </section>
 
-    <!-- Featured Media Showcase (At least two media items: Image + Video) -->
-    <section class="home-media-section" id="featuredMediaSection">
+    <!-- SECTION 1: WHAT SPORT I PLAY -->
+    <section class="home-feature-section" id="sportsSection">
       <div class="section-header">
-        <h2 class="section-title" id="featuredMediaTitle">Featured Work &amp; Engineering Studio</h2>
-        <p class="section-subtitle">A glimpse into my development workstation and engineering demos.</p>
+        <h2 class="section-title" id="sportsSectionTitle">What Sport I Play</h2>
+        <p class="section-subtitle">Battling in the trenches on the offensive line with power, technique, and discipline.</p>
       </div>
 
-      <div class="media-grid-two" id="featuredMediaGrid">
-        <!-- Media Item 1: High quality developer workstation illustration -->
-        <article class="featured-media-card" id="mediaCardWorkstation">
-          <div class="featured-media-frame">
-            <img 
-              src="./assets/images/workspace-setup.svg" 
-              alt="Ian Tapia Reyes software engineering workstation and dual-monitor development environment"
-              loading="lazy"
-            >
+      <!-- Main Sport Highlight: Football (O-Line Tackle & Center) -->
+      <article class="sport-spotlight-card" id="sportSpotlightCard">
+        <div class="sport-spotlight-header">
+          <div class="sport-main-badge-icon" aria-hidden="true">🏈</div>
+          <div class="sport-header-text">
+            <h3>Football &bull; Offensive Line (O-Line)</h3>
+            <span class="sport-pill-status">Positions: Tackle &amp; Center</span>
           </div>
-          <div class="featured-card-body">
-            <h3 class="featured-card-title">Development Workstation</h3>
-            <p class="featured-card-caption">
-              My multi-screen development environment configured with Vim keybindings, Node.js runtime tools, and live responsive browser debugging instances.
-            </p>
-          </div>
-        </article>
+        </div>
 
-        <!-- Media Item 2: Native HTML5 MP4 Video Demo -->
-        <article class="featured-media-card" id="mediaCardVideo">
-          <div class="featured-media-frame">
+        <p class="sport-lead-text">
+          <strong>I play football, holding down the offensive line as both tackle and center.</strong> The O-line is the engine of the entire offense. At <strong>center</strong>, I have to make the pre-snap calls, read defensive fronts, and deliver a clean, accurate snap before engaging my block. At <strong>tackle</strong>, I protect the edge against outside pass rushers and kick out to open up explosive running lanes for our backs. It takes raw power, quick feet, smart leverage, and total trust in your brothers on the line.
+        </p>
+
+        <!-- Football Lineman Spotlight Video (West-Hills-High-School.MP4) on Offensive Line -->
+        <div class="sport-video-banner featured-football-video-card" id="homeFeaturedVideoCard">
+          <div class="sport-video-card-header">
+            <span class="sport-video-badge">🏈 Offensive Line Video &bull; West Hills High School</span>
+            <div class="video-active-pill" id="homeFeaturedVideoUploadStatus">
+              <span>📹 Active Video: <strong id="homeVideoFileNameTag">West-Hills-High-School.MP4</strong></span>
+            </div>
+          </div>
+          <div class="video-player-wrapper sport-video-player-wrapper">
             <video 
-              src="./assets/videos/ian-intro.mp4" 
+              id="homeFeaturedVideo" 
+              class="featured-video future-media-video" 
+              playsinline 
               controls 
-              preload="metadata"
-              poster="./assets/images/project-dashboard.svg"
-              aria-label="Ian Tapia Reyes portfolio and technical showcase video"
+              autoplay 
+              muted 
+              loop 
+              preload="auto"
             >
+              <source src="./assets/videos/west-hills-high-school.mp4" type="video/mp4">
+              <source src="./assets/videos/football-trench.mp4" type="video/mp4">
               Your browser does not support HTML5 video.
             </video>
           </div>
-          <div class="featured-card-body">
-            <h3 class="featured-card-title">Portfolio Showcase Video</h3>
-            <p class="featured-card-caption">
-              A high-definition overview highlighting core engineering principles, full-stack application logic, and systems architecture.
-            </p>
+          <div class="sport-video-tools">
+            <label class="slide-upload-label video-upload-label" title="Upload or choose your West-Hills-High-School.MP4 video">
+              <input type="file" accept="video/*" class="video-file-input" id="homeFeaturedVideoFileInput">
+              <span>🎬 Choose / Replace Video (West-Hills-High-School.MP4)</span>
+            </label>
+            <span class="video-drop-tip">💡 Drag and drop your video file directly onto this card to play &amp; save</span>
           </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- SECTION 3: FUN FACTS ABOUT ME -->
+    <section class="home-feature-section" id="funFactsSection">
+      <div class="fun-facts-toolbar">
+        <div>
+          <h2 class="section-title" id="funFactsTitle">Fun Facts About Me</h2>
+          <p class="section-subtitle">Quick, quirky, and interesting things you might not know about me.</p>
+        </div>
+        <button type="button" class="btn-shuffle-fact" id="shuffleFactBtn" aria-label="Randomize and highlight a fun fact">
+          <span aria-hidden="true">🎲</span> Surprise Me with a Fun Fact!
+        </button>
+      </div>
+
+      <!-- Fun Facts Author Spotlight with Ian's Photo -->
+      <div class="fun-facts-author-spotlight" id="funFactsAuthorSpotlight">
+        <div class="fun-facts-author-avatar-wrap">
+          <img 
+            src="./assets/images/ian-photo.jpg" 
+            alt="Ian Tapia Reyes profile photo" 
+            class="fun-facts-author-photo" 
+            id="funFactsAuthorPhoto"
+          >
+        </div>
+        <div class="fun-facts-author-meta">
+          <span class="fun-facts-author-name">Ian Tapia Reyes</span>
+          <span class="fun-facts-author-role">🏈 Offensive Lineman &bull; ⛰️ Ranch Owner &bull; 🔧 Mechanic</span>
+        </div>
+      </div>
+
+      <!-- Surprise Fact Banner (Updated dynamically by JS) -->
+      <div class="surprise-fact-banner" id="surpriseFactBanner" role="region" aria-live="polite">
+        <div class="surprise-fact-icon" id="surpriseFactIcon" aria-hidden="true">✨</div>
+        <div class="surprise-fact-content">
+          <h4 id="surpriseFactTag">Featured Fun Fact</h4>
+          <p id="surpriseFactText">Click the button above to discover an awesome random fun fact about Ian!</p>
+        </div>
+      </div>
+
+      <!-- Fun Facts 4-Card Grid with Photos -->
+      <div class="fun-facts-grid" id="funFactsGrid">
+        <!-- Fact 1: Football O-Line (Tackle & Center) -->
+        <article class="fun-fact-card" id="fact1" data-index="0">
+          <div class="fun-fact-header">
+            <span class="fun-fact-emoji" aria-hidden="true">🏈</span>
+            <span class="fun-fact-category">Football &amp; Positions</span>
+          </div>
+          <h3 class="fun-fact-card-title">I Play Football (O-Line Tackle &amp; Center)</h3>
+          <p class="fun-fact-card-desc">
+            I play football on the offensive line! I play both tackle and center—making line calls and snapping the ball under pressure at center, and locking down outside edge rushers at tackle to protect the quarterback and open running lanes.
+          </p>
+        </article>
+
+        <!-- Fact 2: Summer in Cancun (with Photo) -->
+        <article class="fun-fact-card" id="fact2" data-index="1">
+          <div class="fun-fact-header">
+            <span class="fun-fact-emoji" aria-hidden="true">🏖️</span>
+            <span class="fun-fact-category">Summer Travel</span>
+          </div>
+          <div class="fun-fact-image-wrap" id="cancunPhotoWrap">
+            <img 
+              src="./assets/images/cancun-summer.jpg" 
+              alt="Sunny Cancun beach and turquoise Caribbean ocean from summer vacation" 
+              loading="lazy" 
+              referrerpolicy="no-referrer"
+            >
+          </div>
+          <label class="slide-upload-label" title="Upload custom photo for this card">
+            <input type="file" accept="image/*" class="slide-upload-input" data-card-id="fact2" data-target-img="#cancunPhotoWrap img">
+            <span>📷 Upload Photo</span>
+          </label>
+          <h3 class="fun-fact-card-title">I Went to Cancun Over the Summer</h3>
+          <p class="fun-fact-card-desc">
+            I went to Cancun over the summer! Had an awesome time hanging out by the beaches, swimming in the warm ocean, relaxing in the tropical sun, and enjoying great food.
+          </p>
+        </article>
+
+        <!-- Fact 3: Own a Ranch - A Ranch is a Mountain (with Photo) -->
+        <article class="fun-fact-card" id="fact3" data-index="2">
+          <div class="fun-fact-header">
+            <span class="fun-fact-emoji" aria-hidden="true">⛰️</span>
+            <span class="fun-fact-category">Land &amp; Mountains</span>
+          </div>
+          <div class="fun-fact-image-wrap" id="ranchPhotoWrap">
+            <img 
+              src="./assets/images/ranch_mountain_view.jpg" 
+              alt="Mountain ranch night overlook landscape - I own a ranch" 
+              loading="lazy" 
+              referrerpolicy="no-referrer"
+            >
+          </div>
+          <label class="slide-upload-label ranch-upload-btn" title="Choose your Ranch photo">
+            <input type="file" accept="image/*" class="slide-upload-input" data-card-id="fact3" data-target-img="#ranchPhotoWrap img">
+            <span>📷 Choose Your Ranch Photo from Device</span>
+          </label>
+          <h3 class="fun-fact-card-title">I Own a Ranch — A Ranch Is a Mountain!</h3>
+          <p class="fun-fact-card-desc">
+            Here's a cool fact: I own a ranch, and a ranch is a mountain! It's incredible land surrounded by high mountain scenery, wide-open views, fresh air, and peaceful nature.
+          </p>
+        </article>
+
+        <!-- Fact 4: Mechanic (with Photo) -->
+        <article class="fun-fact-card" id="fact4" data-index="3">
+          <div class="fun-fact-header">
+            <span class="fun-fact-emoji" aria-hidden="true">🔧</span>
+            <span class="fun-fact-category">Mechanic</span>
+          </div>
+          <div class="fun-fact-image-wrap" id="mechanicFactPhotoWrap">
+            <img 
+              src="./assets/images/mechanic-career.jpg" 
+              alt="Mechanic working on an engine with tools" 
+              id="mechanicFactPhoto"
+              loading="lazy" 
+              referrerpolicy="no-referrer"
+            >
+          </div>
+          <label class="slide-upload-label" title="Upload custom photo for this card">
+            <input type="file" accept="image/*" class="slide-upload-input" data-card-id="fact4" data-target-img="#mechanicFactPhotoWrap img">
+            <span>📷 Upload Photo</span>
+          </label>
+          <h3 class="fun-fact-card-title">Mechanic</h3>
+          <p class="fun-fact-card-desc">
+            If construction doesn't work for me, I want to be a mechanic. Why I want this job is they get paid a lot.
+          </p>
         </article>
       </div>
     </section>
 
-    <!-- Contact & Social Media Section -->
+    <!-- Contact Section -->
     <section class="home-contact-section" id="contactSection">
-      <div class="section-header">
-        <h2 class="section-title" id="contactSectionTitle">Connect &amp; Collaborate</h2>
-        <p class="section-subtitle">Send a direct message or connect across social channels.</p>
+      <div class="section-header" style="text-align: center; max-width: 600px; margin: 0 auto 1.5rem;">
+        <h2 class="section-title" id="contactSectionTitle">Get In Touch</h2>
+        <p class="section-subtitle">Have a question, opportunity, or feedback? Reach out via email, social profiles, or send a direct message below.</p>
       </div>
 
       <div class="contact-layout" id="contactLayout">
-        <!-- Social Channels & Direct Contact Links -->
-        <div class="contact-info-panel" id="contactInfoPanel">
-          <p class="contact-info-lead">
-            I welcome opportunities for software internships, collaborative research, open-source projects, or technical conversations. Feel free to reach out directly through any of the channels below.
-          </p>
-
-          <div class="direct-channels" id="directChannels">
-            <a href="mailto:iantapiareyes@gmail.com" class="channel-card" id="emailChannelLink">
-              <div class="channel-icon">@</div>
-              <div class="channel-text">
-                <strong>Email Address</strong>
-                <span>iantapiareyes@gmail.com</span>
-              </div>
-            </a>
-
-            <a href="https://github.com/iantapiareyes-cpu" target="_blank" rel="noopener noreferrer" class="channel-card" id="githubChannelLink">
-              <div class="channel-icon">GH</div>
-              <div class="channel-text">
-                <strong>GitHub Profile</strong>
-                <span>github.com/iantapiareyes-cpu</span>
-              </div>
-            </a>
-
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="channel-card" id="linkedinChannelLink">
-              <div class="channel-icon">in</div>
-              <div class="channel-text">
-                <strong>LinkedIn Network</strong>
-                <span>Connect with Ian Tapia Reyes</span>
-              </div>
-            </a>
-
-            <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="channel-card" id="xChannelLink">
-              <div class="channel-icon">𝕏</div>
-              <div class="channel-text">
-                <strong>X / Twitter</strong>
-                <span>@iantapiareyes_dev</span>
-              </div>
-            </a>
-          </div>
+        <!-- Direct Email and Social Media Channels -->
+        <div class="contact-quick-links" id="contactSocialLinks">
+          <a href="mailto:iantapiareyes@gmail.com" class="contact-link-pill" id="emailContactLink" title="Send an email to Ian Tapia Reyes">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span>iantapiareyes@gmail.com</span>
+          </a>
+          <a href="https://github.com/iantapiareyes-cpu" target="_blank" rel="noopener noreferrer" class="contact-link-pill" id="githubContactLink" title="View Ian Tapia Reyes on GitHub">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            <span>GitHub Profile</span>
+          </a>
         </div>
 
         <!-- Contact Form (with First Name, Last Name, Email, Reason dropdown, Message, Submit) -->
@@ -257,7 +375,7 @@
         <div class="footer-brand">
           <h3 class="footer-brand-title">Ian Tapia Reyes</h3>
           <p class="footer-brand-desc">
-            Full-stack web software engineer specializing in scalable JavaScript platforms, clean code standards, and robust user experiences.
+            Personal website of Ian Tapia Reyes featuring football on the offensive line, videos, and fun facts.
           </p>
         </div>
 
@@ -266,21 +384,8 @@
             <h4>Explore</h4>
             <ul class="footer-links-list">
               <li><a href="./index.html" class="footer-link">Home</a></li>
-              <li><a href="./media.html" class="footer-link">Media Gallery</a></li>
+              <li><a href="./media.html" class="footer-link">Videos</a></li>
               <li><a href="./future.html" class="footer-link">Future Vision</a></li>
-              <li><a href="./projects.html" class="footer-link">Engineering Projects</a></li>
-              <li><a href="./community.html" class="footer-link">Community Mentorship</a></li>
-              <li><a href="./admin.html" class="footer-link">Admin Dashboard</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-nav-col">
-            <h4>Connect</h4>
-            <ul class="footer-links-list">
-              <li><a href="mailto:iantapiareyes@gmail.com" class="footer-link">Email Direct</a></li>
-              <li><a href="https://github.com/iantapiareyes-cpu" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a></li>
-              <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a></li>
-              <li><a href="https://x.com" target="_blank" rel="noopener noreferrer" class="footer-link">X / Twitter</a></li>
             </ul>
           </div>
         </div>
