@@ -10,6 +10,7 @@
     "lint": "node -e \"console.log('Lint clean')\""
   },
   "dependencies": {
+    "adm-zip": "^0.6.1",
     "clsx": "^2.1.1",
     "cors": "^2.8.6",
     "express": "^5.2.1",

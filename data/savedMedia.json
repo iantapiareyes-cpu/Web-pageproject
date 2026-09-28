@@ -1,0 +1,71 @@
+{
+  "photos": {
+    "portrait": {
+      "id": "portrait",
+      "title": "Ian Tapia Reyes Portrait",
+      "label": "Hero Profile & About Photo",
+      "fileName": "ian-photo.jpg",
+      "url": "./assets/images/ian-photo.jpg",
+      "relativeDiskPath": "assets/images/ian-photo.jpg"
+    },
+    "fact2": {
+      "id": "fact2",
+      "title": "Cancun Summer Vacation",
+      "label": "cancun-summer.jpg",
+      "fileName": "cancun-summer.jpg",
+      "url": "./assets/images/cancun-summer.jpg?v=1790361359005",
+      "relativeDiskPath": "assets/images/cancun-summer.jpg",
+      "savedAt": "2026-09-25T18:35:59.005Z"
+    },
+    "fact3": {
+      "id": "fact3",
+      "title": "Mountain Ranch",
+      "label": "Fun Fact: I Own a Ranch (A Ranch Is a Mountain)",
+      "fileName": "ranch_mountain_view.jpg",
+      "url": "./assets/images/ranch_mountain_view.jpg",
+      "relativeDiskPath": "assets/images/ranch_mountain_view.jpg"
+    },
+    "fact4": {
+      "id": "fact4",
+      "title": "Mechanic Career",
+      "label": "Fun Fact: Future Career as a Mechanic",
+      "fileName": "mechanic-career.jpg",
+      "url": "./assets/images/mechanic-career.jpg",
+      "relativeDiskPath": "assets/images/mechanic-career.jpg"
+    },
+    "future_mechanic": {
+      "id": "future_mechanic",
+      "title": "Mechanic Career (Future Page)",
+      "label": "Future Careers: High-Earning Mechanic",
+      "fileName": "mechanic-career.jpg",
+      "url": "./assets/images/mechanic-career.jpg",
+      "relativeDiskPath": "assets/images/mechanic-career.jpg"
+    },
+    "why_instagram": {
+      "id": "why_instagram",
+      "title": "Why I Use Instagram Photo",
+      "label": "Videos Page: Instagram Spotlight",
+      "fileName": "ian-photo.jpg",
+      "url": "./assets/images/ian-photo.jpg",
+      "relativeDiskPath": "assets/images/ian-photo.jpg"
+    }
+  },
+  "videos": {
+    "football": {
+      "id": "football",
+      "title": "Football Offensive Line Video",
+      "label": "West Hills High School • Tackle & Center",
+      "fileName": "West-Hills-High-School.MP4",
+      "url": "./assets/videos/west-hills-high-school.mp4",
+      "relativeDiskPath": "assets/videos/west-hills-high-school.mp4"
+    },
+    "construction": {
+      "id": "construction",
+      "title": "Future Construction Worker Video",
+      "label": "Construction Career Inspired by Grandpa",
+      "fileName": "VID_20260829_165756814.MP4",
+      "url": "./assets/videos/construction-worker.mp4",
+      "relativeDiskPath": "assets/videos/construction-worker.mp4"
+    }
+  }
+}

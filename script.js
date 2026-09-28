@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMediaVideoManager();
   initFeaturedFootballVideo();
   initConstructionWorkerVideo();
+  initSavedMediaVault();
 });
 
 /* ==========================================================================
@@ -300,10 +301,30 @@ function initPhotoUpload() {
           console.warn('Could not cache photo to local storage', err);
         }
 
+        // Upload directly to server to permanently save to assets/images/ian-photo.jpg
+        fetch('/api/upload-photo?targetId=portrait&filename=' + encodeURIComponent(file.name), {
+          method: 'POST',
+          headers: {
+            'Content-Type': file.type || 'image/jpeg',
+            'x-target-id': 'portrait',
+            'x-filename': file.name
+          },
+          body: file
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.success) {
+              showMediaToast('Portrait photo permanently saved to server disk!');
+              const heroDl = document.getElementById('downloadHeroPhoto');
+              if (heroDl) heroDl.href = data.url;
+            }
+          })
+          .catch((err) => console.warn('Server photo sync:', err));
+
         // Visual feedback
         if (uploadLabel) {
           const originalText = uploadLabel.innerHTML;
-          uploadLabel.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Photo Updated!</span>`;
+          uploadLabel.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Photo Saved!</span>`;
           setTimeout(() => {
             uploadLabel.innerHTML = originalText;
           }, 2500);
@@ -973,19 +994,33 @@ function initSlidePhotoUploads() {
           console.warn('Could not save photo to localStorage', err);
         }
 
-        // If this is the football picture on home, also persist to server
-        if (cardId === 'sport_banner' || cardId === 'fact1') {
-          fetch('/api/upload-football-photo', {
-            method: 'POST',
-            headers: { 'Content-Type': file.type || 'image/jpeg' },
-            body: file
-          }).catch(e => console.warn('Server photo sync notice:', e));
-        }
+        // Upload and permanently save picture to server disk
+        fetch(`/api/upload-photo?targetId=${encodeURIComponent(cardId)}&filename=${encodeURIComponent(file.name)}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': file.type || 'image/jpeg',
+            'x-target-id': cardId,
+            'x-filename': file.name
+          },
+          body: file
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.success) {
+              showMediaToast(`Photo for ${cardId} permanently saved to server disk!`);
+              // Update any matching download buttons on the page
+              const dlButtons = document.querySelectorAll(`[data-download-card="${cardId}"]`);
+              dlButtons.forEach((btn) => {
+                btn.href = data.url;
+              });
+            }
+          })
+          .catch((e) => console.warn('Server photo sync notice:', e));
 
         const label = input.closest('.slide-upload-label');
         if (label) {
           const originalText = label.innerHTML;
-          label.innerHTML = '<span>✓ Photo Updated!</span>';
+          label.innerHTML = '<span>✓ Saved to Server!</span>';
           setTimeout(() => {
             label.innerHTML = originalText;
           }, 2000);
@@ -1012,7 +1047,17 @@ function initSlidePhotoUploads() {
             try {
               localStorage.setItem('slide_photo_fact3', dataUrl);
             } catch (err) {}
-            alert('Your Ranch photo has been updated and saved!');
+            // Save pasted ranch photo to server disk as well
+            fetch('/api/upload-photo?targetId=fact3&filename=ranch-pasted.jpg', {
+              method: 'POST',
+              headers: { 'Content-Type': file.type || 'image/jpeg' },
+              body: file
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                showMediaToast('Ranch photo saved permanently to server disk!');
+              })
+              .catch(() => {});
           }
         };
         reader.readAsDataURL(file);
@@ -1165,6 +1210,11 @@ function initFeaturedFootballVideo() {
           if (!statusEl) return;
           if (data.success) {
             statusEl.innerHTML = `✓ Saved &amp; Active: <strong>${safeEscape(file.name)}</strong>`;
+            showMediaToast('Football video permanently saved to server disk!');
+            const dlHome = document.getElementById('downloadFootballVideoHome');
+            if (dlHome) dlHome.href = data.url;
+            const dlMedia = document.getElementById('downloadFootballVideoMedia');
+            if (dlMedia) dlMedia.href = data.url;
           } else {
             statusEl.innerHTML = `✓ Playing: <strong>${safeEscape(file.name)}</strong>`;
           }
@@ -1330,6 +1380,9 @@ function initConstructionWorkerVideo() {
         if (statusEl) {
           if (data.success) {
             statusEl.innerHTML = `<span>✓ Saved &amp; Active: <strong>${safeEscape(file.name)}</strong></span>`;
+            showMediaToast('Construction worker video permanently saved to server disk!');
+            const dlConst = document.getElementById('downloadConstructionVideo');
+            if (dlConst) dlConst.href = data.url;
           } else {
             statusEl.innerHTML = `<span>✓ Playing: <strong>${safeEscape(file.name)}</strong></span>`;
           }
@@ -1377,5 +1430,318 @@ function initConstructionWorkerVideo() {
   });
 }
 
+/* ==========================================================================
+   Media Toast Notifications
+   ========================================================================== */
+function showMediaToast(message) {
+  let toast = document.getElementById('mediaToastNotification');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'mediaToastNotification';
+    toast.className = 'media-toast-notification';
+    document.body.appendChild(toast);
+  }
 
+  toast.innerHTML = `<span style="font-size:1.2rem;">💾</span> <span>${message}</span>`;
+  toast.classList.add('show');
 
+  if (window.__mediaToastTimer) clearTimeout(window.__mediaToastTimer);
+  window.__mediaToastTimer = setTimeout(() => {
+    toast.classList.remove('show');
+  }, 3500);
+}
+
+/* ==========================================================================
+   Media Vault: My Saved Pictures & Videos
+   Central controller for viewing, downloading, syncing & managing all media
+   ========================================================================== */
+function initSavedMediaVault() {
+  let vaultModal = document.getElementById('mediaVaultModal');
+
+  // Inject vault modal if not present in the static HTML
+  if (!vaultModal) {
+    vaultModal = document.createElement('div');
+    vaultModal.id = 'mediaVaultModal';
+    vaultModal.className = 'media-vault-modal';
+    vaultModal.setAttribute('role', 'dialog');
+    vaultModal.setAttribute('aria-modal', 'true');
+    vaultModal.setAttribute('aria-labelledby', 'mediaVaultTitle');
+    vaultModal.innerHTML = `
+      <div class="media-vault-panel">
+        <div class="media-vault-header">
+          <div class="media-vault-header-info">
+            <div class="media-vault-title-wrap">
+              <span style="font-size: 1.5rem;">💾</span>
+              <h2 class="media-vault-title" id="mediaVaultTitle">My Saved Pictures &amp; Videos</h2>
+              <span class="media-vault-badge-header" id="vaultTotalBadge">7 Media Items Saved</span>
+            </div>
+            <p class="media-vault-subtitle">
+              All your pictures and videos are stored permanently on the server disk. You can download and save them to your device anytime, or save replacements.
+            </p>
+          </div>
+          <button class="media-vault-close-btn" id="closeMediaVaultBtn" aria-label="Close saved media vault">&times;</button>
+        </div>
+
+        <div class="media-vault-toolbar">
+          <div class="media-vault-stats">
+            <span class="media-stat-item">📷 <strong id="vaultPhotoCount">5</strong> Pictures</span>
+            <span>&bull;</span>
+            <span class="media-stat-item">🎬 <strong id="vaultVideoCount">2</strong> Videos</span>
+            <span>&bull;</span>
+            <span class="media-saved-indicator"><span class="saved-dot"></span> Permanent Server Disk Active</span>
+          </div>
+
+          <div class="media-vault-actions">
+            <a href="/api/download-all-media" class="btn-zip-download" id="downloadAllZipBtn" download="Ian-Tapia-Reyes-Pictures-and-Videos.zip" title="Download all pictures and videos in one ZIP archive">
+              <span>📦 Save / Download All (ZIP)</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="media-vault-body" id="mediaVaultBody">
+          <!-- Pictures Section -->
+          <div>
+            <h3 class="media-vault-section-title">
+              <span>📷</span> My Saved Pictures
+            </h3>
+            <div class="media-vault-grid" id="vaultPhotosGrid">
+              <!-- Dynamically rendered -->
+            </div>
+          </div>
+
+          <!-- Videos Section -->
+          <div>
+            <h3 class="media-vault-section-title">
+              <span>🎬</span> My Saved Videos
+            </h3>
+            <div class="media-vault-grid" id="vaultVideosGrid">
+              <!-- Dynamically rendered -->
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(vaultModal);
+  }
+
+  // Setup Open and Close buttons
+  function openVault() {
+    vaultModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    loadAndRenderVaultMedia();
+  }
+
+  function closeVault() {
+    vaultModal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  const openBtns = document.querySelectorAll('#openMediaVaultBtn, .open-vault-btn');
+  openBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openVault();
+    });
+  });
+
+  const closeBtn = document.getElementById('closeMediaVaultBtn');
+  if (closeBtn) closeBtn.addEventListener('click', closeVault);
+
+  vaultModal.addEventListener('click', (e) => {
+    if (e.target === vaultModal) closeVault();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && vaultModal.classList.contains('active')) {
+      closeVault();
+    }
+  });
+
+  // Fetch saved media from server and render inside vault and sync on-page elements
+  async function loadAndRenderVaultMedia() {
+    try {
+      const res = await fetch('/api/saved-media');
+      if (!res.ok) return;
+      const data = await res.json();
+
+      const photosGrid = document.getElementById('vaultPhotosGrid');
+      const videosGrid = document.getElementById('vaultVideosGrid');
+      const totalBadge = document.getElementById('vaultTotalBadge');
+      const photoCountEl = document.getElementById('vaultPhotoCount');
+      const videoCountEl = document.getElementById('vaultVideoCount');
+
+      if (totalBadge && data.stats) {
+        totalBadge.textContent = `${data.stats.totalMedia || 7} Media Items Saved`;
+      }
+      if (photoCountEl && data.stats) {
+        photoCountEl.textContent = data.stats.totalPhotos || 5;
+      }
+      if (videoCountEl && data.stats) {
+        videoCountEl.textContent = data.stats.totalVideos || 2;
+      }
+
+      // Render Photos in Vault
+      if (photosGrid && Array.isArray(data.photos)) {
+        photosGrid.innerHTML = data.photos
+          .map((photo) => {
+            return `
+              <div class="vault-item-card" id="vaultCard_${photo.id}">
+                <div class="vault-thumb-wrap">
+                  <img src="${photo.url}" alt="${photo.title}" loading="lazy">
+                  <span class="vault-item-badge">📷 ${photo.sizeFormatted || 'Photo'}</span>
+                </div>
+                <div class="vault-item-body">
+                  <h4 class="vault-item-title">${photo.title}</h4>
+                  <div class="vault-item-meta">
+                    <span>${photo.fileName}</span>
+                    <span class="media-saved-indicator"><span class="saved-dot"></span> Saved</span>
+                  </div>
+                  <div class="vault-item-actions">
+                    <a href="${photo.url}" download="${photo.fileName}" class="btn-vault-download" title="Save this picture to your computer or phone">
+                      ⬇️ Save Photo
+                    </a>
+                    <label class="btn-vault-replace" title="Upload a new picture to replace and save permanently">
+                      <span>🔄 Replace</span>
+                      <input type="file" accept="image/*" class="sr-only vault-photo-replacer" data-target-id="${photo.id}" style="display:none;">
+                    </label>
+                  </div>
+                </div>
+              </div>
+            `;
+          })
+          .join('');
+
+        // Attach replace event listeners
+        photosGrid.querySelectorAll('.vault-photo-replacer').forEach((input) => {
+          input.addEventListener('change', async (e) => {
+            const file = e.target.files && e.target.files[0];
+            const targetId = input.getAttribute('data-target-id');
+            if (!file || !targetId) return;
+
+            showMediaToast(`Saving ${file.name} to server...`);
+            try {
+              const uploadRes = await fetch(`/api/upload-photo?targetId=${encodeURIComponent(targetId)}&filename=${encodeURIComponent(file.name)}`, {
+                method: 'POST',
+                headers: { 'Content-Type': file.type || 'image/jpeg' },
+                body: file
+              });
+              const uploadData = await uploadRes.json();
+              if (uploadData.success) {
+                showMediaToast(`✓ Photo saved permanently to server!`);
+                loadAndRenderVaultMedia();
+                syncPageMediaElements();
+              }
+            } catch (err) {
+              console.warn('Replace photo error:', err);
+            }
+          });
+        });
+      }
+
+      // Render Videos in Vault
+      if (videosGrid && Array.isArray(data.videos)) {
+        videosGrid.innerHTML = data.videos
+          .map((video) => {
+            return `
+              <div class="vault-item-card" id="vaultCard_${video.id}">
+                <div class="vault-thumb-wrap">
+                  <video src="${video.url}" controls playsinline preload="metadata" style="background:#000;"></video>
+                  <span class="vault-item-badge">🎬 ${video.sizeFormatted || 'Video'}</span>
+                </div>
+                <div class="vault-item-body">
+                  <h4 class="vault-item-title">${video.title}</h4>
+                  <div class="vault-item-meta">
+                    <span>${video.fileName}</span>
+                    <span class="media-saved-indicator"><span class="saved-dot"></span> Saved</span>
+                  </div>
+                  <div class="vault-item-actions">
+                    <a href="${video.url}" download="${video.fileName}" class="btn-vault-download" title="Save this video to your computer or phone">
+                      ⬇️ Save Video
+                    </a>
+                    <label class="btn-vault-replace" title="Upload a new video to replace and save permanently">
+                      <span>🔄 Replace</span>
+                      <input type="file" accept="video/*" class="sr-only vault-video-replacer" data-target-id="${video.id}" style="display:none;">
+                    </label>
+                  </div>
+                </div>
+              </div>
+            `;
+          })
+          .join('');
+
+        // Attach video replace listeners
+        videosGrid.querySelectorAll('.vault-video-replacer').forEach((input) => {
+          input.addEventListener('change', async (e) => {
+            const file = e.target.files && e.target.files[0];
+            const targetId = input.getAttribute('data-target-id');
+            if (!file || !targetId) return;
+
+            const endpoint = targetId === 'construction' ? '/api/upload-construction-video' : '/api/upload-featured-video';
+            showMediaToast(`Saving ${file.name} to server...`);
+            try {
+              const uploadRes = await fetch(endpoint, {
+                method: 'POST',
+                headers: { 'Content-Type': file.type || 'video/mp4' },
+                body: file
+              });
+              const uploadData = await uploadRes.json();
+              if (uploadData.success) {
+                showMediaToast(`✓ Video saved permanently to server!`);
+                loadAndRenderVaultMedia();
+                syncPageMediaElements();
+              }
+            } catch (err) {
+              console.warn('Replace video error:', err);
+            }
+          });
+        });
+      }
+    } catch (e) {
+      console.warn('Could not load saved media:', e);
+    }
+  }
+
+  // Sync on-page elements with server data on initial load
+  async function syncPageMediaElements() {
+    try {
+      const res = await fetch('/api/saved-media');
+      if (!res.ok) return;
+      const data = await res.json();
+
+      // Update badge counts in navigation
+      const navBadges = document.querySelectorAll('.media-vault-badge');
+      navBadges.forEach((badge) => {
+        if (data.stats && data.stats.totalMedia) {
+          badge.textContent = `${data.stats.totalMedia} Saved`;
+        }
+      });
+
+      // Update download links on current page
+      if (Array.isArray(data.photos)) {
+        data.photos.forEach((p) => {
+          const dlBtn = document.querySelector(`[data-download-card="${p.id}"]`);
+          if (dlBtn) dlBtn.href = p.url;
+        });
+      }
+
+      if (Array.isArray(data.videos)) {
+        data.videos.forEach((v) => {
+          if (v.id === 'football') {
+            const dlHome = document.getElementById('downloadFootballVideoHome');
+            if (dlHome) dlHome.href = v.url;
+            const dlMedia = document.getElementById('downloadFootballVideoMedia');
+            if (dlMedia) dlMedia.href = v.url;
+          } else if (v.id === 'construction') {
+            const dlConst = document.getElementById('downloadConstructionVideo');
+            if (dlConst) dlConst.href = v.url;
+          }
+        });
+      }
+    } catch (err) {
+      // Offline fallback
+    }
+  }
+
+  // Run initial sync
+  syncPageMediaElements();
+}

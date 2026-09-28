@@ -32,6 +32,12 @@
           <li><a href="./future.html" class="nav-link" id="navFuture">Future</a></li>
         </ul>
       </nav>
+
+      <button type="button" class="media-vault-nav-btn" id="openMediaVaultBtn" title="View, download, and save all your pictures and videos">
+        <span class="media-vault-icon">💾</span>
+        <span>Saved Pictures &amp; Videos</span>
+        <span class="media-vault-badge">7 Saved</span>
+      </button>
     </div>
   </header>
 
@@ -85,11 +91,14 @@
                 loading="lazy" 
                 referrerpolicy="no-referrer"
               >
-              <div class="instagram-photo-action-bar">
+              <div class="instagram-photo-action-bar" style="display: flex; gap: 0.5rem; align-items: center; justify-content: center; flex-wrap: wrap;">
                 <label class="slide-upload-label" title="Upload custom photo for Why I Use Instagram">
                   <input type="file" accept="image/*" class="slide-upload-input" data-card-id="why_instagram" data-target-img="#instagramMediaPhotoBox img">
                   <span>📷 Upload Photo</span>
                 </label>
+                <a href="./assets/images/ian-photo.jpg" download="ian-photo.jpg" class="media-download-btn" id="downloadInstagramPhoto" title="Save / download Instagram photo to device" data-download-card="why_instagram">
+                  <span>⬇️ Save Photo</span>
+                </a>
               </div>
             </div>
 
@@ -154,11 +163,17 @@
               </video>
             </div>
             <div class="sport-video-tools">
-              <label class="slide-upload-label video-upload-label" title="Upload or choose your West-Hills-High-School.MP4 video">
-                <input type="file" accept="video/*" class="video-file-input" id="featuredVideoFileInput">
-                <span>🎬 Choose / Replace Video (West-Hills-High-School.MP4)</span>
-              </label>
-              <span class="video-drop-tip">💡 Drag and drop your video file directly onto this card</span>
+              <div style="display: flex; gap: 0.65rem; align-items: center; flex-wrap: wrap;">
+                <label class="slide-upload-label video-upload-label" title="Upload or choose your West-Hills-High-School.MP4 video">
+                  <input type="file" accept="video/*" class="video-file-input" id="featuredVideoFileInput">
+                  <span>🎬 Choose / Replace Video (West-Hills-High-School.MP4)</span>
+                </label>
+                <a href="./assets/videos/west-hills-high-school.mp4" download="West-Hills-High-School.MP4" class="media-download-btn btn-video-download" id="downloadFootballVideoMedia" title="Save / download football video to device">
+                  <span>⬇️ Save Video</span>
+                </a>
+                <span class="media-saved-indicator"><span class="saved-dot"></span> Saved to Server Disk</span>
+              </div>
+              <span class="video-drop-tip">💡 Drag and drop your video file directly onto this card to play &amp; save permanently</span>
             </div>
           </div>
         </div>

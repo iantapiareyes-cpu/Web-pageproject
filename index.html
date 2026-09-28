@@ -32,6 +32,12 @@
           <li><a href="./future.html" class="nav-link" id="navFuture">Future</a></li>
         </ul>
       </nav>
+
+      <button type="button" class="media-vault-nav-btn" id="openMediaVaultBtn" title="View, download, and save all your pictures and videos">
+        <span class="media-vault-icon">💾</span>
+        <span>Saved Pictures &amp; Videos</span>
+        <span class="media-vault-badge">7 Saved</span>
+      </button>
     </div>
   </header>
 
@@ -49,11 +55,17 @@
           width="360"
           height="360"
         >
-        <div class="portrait-actions" id="portraitActions">
-          <label for="photoFileInput" class="photo-upload-label" id="photoUploadLabel" title="Upload or change with your personal photo">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
-            <span>Change / Upload Photo</span>
-          </label>
+        <div class="portrait-actions" id="portraitActions" style="display: flex; flex-direction: column; gap: 0.5rem; align-items: center;">
+          <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; justify-content: center;">
+            <label for="photoFileInput" class="photo-upload-label" id="photoUploadLabel" title="Upload or change with your personal photo">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+              <span>Change / Upload Photo</span>
+            </label>
+            <a href="./assets/images/ian-photo.jpg" download="ian-photo.jpg" class="media-download-btn" id="downloadHeroPhoto" title="Save / download portrait photo to your computer or phone" data-download-card="portrait">
+              <span>⬇️ Save Photo</span>
+            </a>
+          </div>
+          <span class="media-saved-indicator"><span class="saved-dot"></span> Saved to Server Disk</span>
           <input type="file" id="photoFileInput" accept="image/*" class="sr-only" aria-label="Upload your personal photo">
         </div>
       </div>
@@ -137,11 +149,17 @@
             </video>
           </div>
           <div class="sport-video-tools">
-            <label class="slide-upload-label video-upload-label" title="Upload or choose your West-Hills-High-School.MP4 video">
-              <input type="file" accept="video/*" class="video-file-input" id="homeFeaturedVideoFileInput">
-              <span>🎬 Choose / Replace Video (West-Hills-High-School.MP4)</span>
-            </label>
-            <span class="video-drop-tip">💡 Drag and drop your video file directly onto this card to play &amp; save</span>
+            <div style="display: flex; gap: 0.65rem; align-items: center; flex-wrap: wrap;">
+              <label class="slide-upload-label video-upload-label" title="Upload or choose your West-Hills-High-School.MP4 video">
+                <input type="file" accept="video/*" class="video-file-input" id="homeFeaturedVideoFileInput">
+                <span>🎬 Choose / Replace Video (West-Hills-High-School.MP4)</span>
+              </label>
+              <a href="./assets/videos/west-hills-high-school.mp4" download="West-Hills-High-School.MP4" class="media-download-btn btn-video-download" id="downloadFootballVideoHome" title="Save / download football video to device">
+                <span>⬇️ Save Video</span>
+              </a>
+              <span class="media-saved-indicator"><span class="saved-dot"></span> Saved to Server Disk</span>
+            </div>
+            <span class="video-drop-tip">💡 Drag and drop your video file directly onto this card to play &amp; save permanently</span>
           </div>
         </div>
       </article>
@@ -212,10 +230,15 @@
               referrerpolicy="no-referrer"
             >
           </div>
-          <label class="slide-upload-label" title="Upload custom photo for this card">
-            <input type="file" accept="image/*" class="slide-upload-input" data-card-id="fact2" data-target-img="#cancunPhotoWrap img">
-            <span>📷 Upload Photo</span>
-          </label>
+          <div class="media-action-row">
+            <label class="slide-upload-label" title="Upload custom photo for this card">
+              <input type="file" accept="image/*" class="slide-upload-input" data-card-id="fact2" data-target-img="#cancunPhotoWrap img">
+              <span>📷 Upload Photo</span>
+            </label>
+            <a href="./assets/images/cancun-summer.jpg" download="cancun-summer.jpg" class="media-download-btn" id="downloadCancunPhoto" title="Save Cancun photo to device" data-download-card="fact2">
+              <span>⬇️ Save Photo</span>
+            </a>
+          </div>
           <h3 class="fun-fact-card-title">I Went to Cancun Over the Summer</h3>
           <p class="fun-fact-card-desc">
             I went to Cancun over the summer! Had an awesome time hanging out by the beaches, swimming in the warm ocean, relaxing in the tropical sun, and enjoying great food.
@@ -236,10 +259,15 @@
               referrerpolicy="no-referrer"
             >
           </div>
-          <label class="slide-upload-label ranch-upload-btn" title="Choose your Ranch photo">
-            <input type="file" accept="image/*" class="slide-upload-input" data-card-id="fact3" data-target-img="#ranchPhotoWrap img">
-            <span>📷 Choose Your Ranch Photo from Device</span>
-          </label>
+          <div class="media-action-row">
+            <label class="slide-upload-label ranch-upload-btn" title="Choose your Ranch photo">
+              <input type="file" accept="image/*" class="slide-upload-input" data-card-id="fact3" data-target-img="#ranchPhotoWrap img">
+              <span>📷 Choose Ranch Photo</span>
+            </label>
+            <a href="./assets/images/ranch_mountain_view.jpg" download="ranch_mountain_view.jpg" class="media-download-btn" id="downloadRanchPhoto" title="Save Ranch photo to device" data-download-card="fact3">
+              <span>⬇️ Save Photo</span>
+            </a>
+          </div>
           <h3 class="fun-fact-card-title">I Own a Ranch — A Ranch Is a Mountain!</h3>
           <p class="fun-fact-card-desc">
             Here's a cool fact: I own a ranch, and a ranch is a mountain! It's incredible land surrounded by high mountain scenery, wide-open views, fresh air, and peaceful nature.
@@ -256,15 +284,20 @@
             <img 
               src="./assets/images/mechanic-career.jpg" 
               alt="Mechanic working on an engine with tools" 
-              id="mechanicFactPhoto"
+              id="mechanicFactPhoto" 
               loading="lazy" 
               referrerpolicy="no-referrer"
             >
           </div>
-          <label class="slide-upload-label" title="Upload custom photo for this card">
-            <input type="file" accept="image/*" class="slide-upload-input" data-card-id="fact4" data-target-img="#mechanicFactPhotoWrap img">
-            <span>📷 Upload Photo</span>
-          </label>
+          <div class="media-action-row">
+            <label class="slide-upload-label" title="Upload custom photo for this card">
+              <input type="file" accept="image/*" class="slide-upload-input" data-card-id="fact4" data-target-img="#mechanicFactPhotoWrap img">
+              <span>📷 Upload Photo</span>
+            </label>
+            <a href="./assets/images/mechanic-career.jpg" download="mechanic-career.jpg" class="media-download-btn" id="downloadMechanicPhoto" title="Save Mechanic photo to device" data-download-card="fact4">
+              <span>⬇️ Save Photo</span>
+            </a>
+          </div>
           <h3 class="fun-fact-card-title">Mechanic</h3>
           <p class="fun-fact-card-desc">
             If construction doesn't work for me, I want to be a mechanic. Why I want this job is they get paid a lot.

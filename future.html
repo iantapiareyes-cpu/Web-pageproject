@@ -32,6 +32,12 @@
           <li><a href="./future.html" class="nav-link active" id="navFuture">Future</a></li>
         </ul>
       </nav>
+
+      <button type="button" class="media-vault-nav-btn" id="openMediaVaultBtn" title="View, download, and save all your pictures and videos">
+        <span class="media-vault-icon">💾</span>
+        <span>Saved Pictures &amp; Videos</span>
+        <span class="media-vault-badge">7 Saved</span>
+      </button>
     </div>
   </header>
 
@@ -78,10 +84,16 @@
               I want to be a construction worker because my grandpa inspired me to be a construction worker and construction workers get paid a lot.
             </p>
             <div class="future-video-tools">
-              <label class="slide-upload-label video-upload-label" title="Upload or choose your VID_20260829_165756814.MP4 video">
-                <input type="file" accept="video/*" class="video-file-input" id="constructionVideoUploadInput">
-                <span>🎬 Choose / Replace Video (VID_20260829_165756814.MP4)</span>
-              </label>
+              <div style="display: flex; gap: 0.65rem; align-items: center; flex-wrap: wrap;">
+                <label class="slide-upload-label video-upload-label" title="Upload or choose your VID_20260829_165756814.MP4 video">
+                  <input type="file" accept="video/*" class="video-file-input" id="constructionVideoUploadInput">
+                  <span>🎬 Choose / Replace Video (VID_20260829_165756814.MP4)</span>
+                </label>
+                <a href="./assets/videos/construction-worker.mp4" download="VID_20260829_165756814.MP4" class="media-download-btn btn-video-download" id="downloadConstructionVideo" title="Save / download construction worker video to device">
+                  <span>⬇️ Save Video</span>
+                </a>
+                <span class="media-saved-indicator"><span class="saved-dot"></span> Saved to Server Disk</span>
+              </div>
               <div class="video-active-pill" id="constructionVideoStatus">
                 <span>📹 Video: <strong>VID_20260829_165756814.MP4</strong></span>
               </div>
@@ -107,10 +119,15 @@
             <p class="future-photo-desc">
               If construction doesn't work for me, I want to be a mechanic. Why I want this job is they get paid a lot.
             </p>
-            <label class="slide-upload-label" title="Upload custom photo for this card">
-              <input type="file" accept="image/*" class="slide-upload-input" data-card-id="future_mechanic" data-target-img="#photoCardMechanic img">
-              <span>📷 Upload Photo</span>
-            </label>
+            <div class="media-action-row">
+              <label class="slide-upload-label" title="Upload custom photo for this card">
+                <input type="file" accept="image/*" class="slide-upload-input" data-card-id="future_mechanic" data-target-img="#photoCardMechanic img">
+                <span>📷 Upload Photo</span>
+              </label>
+              <a href="./assets/images/mechanic-career.jpg" download="mechanic-career.jpg" class="media-download-btn" id="downloadFutureMechanicPhoto" title="Save Mechanic photo to device" data-download-card="future_mechanic">
+                <span>⬇️ Save Photo</span>
+              </a>
+            </div>
           </div>
         </article>
       </div>
