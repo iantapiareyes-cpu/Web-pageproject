@@ -713,6 +713,14 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+app.get('/media', (req, res) => {
+  res.sendFile(path.join(__dirname, 'media.html'));
+});
+
+app.get('/future', (req, res) => {
+  res.sendFile(path.join(__dirname, 'future.html'));
+});
+
 // Initialize data and media files on startup
 ensureDataFile();
 ensureSavedMedia();

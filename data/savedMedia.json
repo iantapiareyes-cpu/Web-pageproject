@@ -20,10 +20,11 @@
     "fact3": {
       "id": "fact3",
       "title": "Mountain Ranch",
-      "label": "Fun Fact: I Own a Ranch (A Ranch Is a Mountain)",
+      "label": "IMG_1384.jpeg",
       "fileName": "ranch_mountain_view.jpg",
-      "url": "./assets/images/ranch_mountain_view.jpg",
-      "relativeDiskPath": "assets/images/ranch_mountain_view.jpg"
+      "url": "./assets/images/ranch_mountain_view.jpg?v=1790616952846",
+      "relativeDiskPath": "assets/images/ranch_mountain_view.jpg",
+      "savedAt": "2026-09-28T17:35:52.846Z"
     },
     "fact4": {
       "id": "fact4",
