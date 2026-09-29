@@ -1,0 +1,1 @@
+- [Replit setup tool behavior](replit-setup-tools.md) — Validate `.replit` replacements and review manifest changes after installing packages.

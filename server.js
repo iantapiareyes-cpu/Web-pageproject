@@ -10,7 +10,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = 3000;
+const PORT = Number(process.env.PORT) || 5000;
 const DATA_FILE_PATH = path.join(__dirname, 'data', 'contactReceived.json');
 const SAVED_MEDIA_PATH = path.join(__dirname, 'data', 'savedMedia.json');
 
@@ -51,7 +51,7 @@ function writeContacts(contacts) {
 
 // Admin Sessions
 const activeAdminTokens = new Map(); // token -> expiresAt
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
 function cleanupExpiredTokens() {
   const now = Date.now();
@@ -144,6 +144,12 @@ app.post('/api/contact', (req, res) => {
 // POST /api/admin/login
 app.post('/api/admin/login', (req, res) => {
   const { password } = req.body;
+
+  if (!ADMIN_PASSWORD) {
+    return res.status(503).json({
+      error: 'Admin login is not configured. Set ADMIN_PASSWORD in Replit Secrets.'
+    });
+  }
 
   if (!password || typeof password !== 'string') {
     return res.status(400).json({ error: 'Password is required.' });

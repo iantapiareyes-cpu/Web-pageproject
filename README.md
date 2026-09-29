@@ -24,4 +24,10 @@ npm install
 npm run dev
 ```
 
-The application runs on port `3000` bound to `0.0.0.0`.
+The app listens on port `5000` by default and binds to `0.0.0.0`. Replit can
+provide a `PORT` value automatically.
+
+### Admin dashboard
+
+Set `ADMIN_PASSWORD` in Replit Secrets before using the admin dashboard. The
+application does not ship with a default admin password.
