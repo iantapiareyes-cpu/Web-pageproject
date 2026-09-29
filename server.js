@@ -585,6 +585,48 @@ app.get('/api/download-media', (req, res) => {
   }
 });
 
+// GET /api/download-project-zip - Download complete Web Page Project presentation code & assets in a ZIP
+app.get('/api/download-project-zip', (req, res) => {
+  try {
+    const zip = new AdmZip();
+    const rootDir = __dirname;
+    const ignoreList = new Set(['node_modules', '.git', 'dist', '.cache']);
+
+    const addFilesRecursively = (dir, zipSubPath = '') => {
+      const entries = fs.readdirSync(dir, { withFileTypes: true });
+      for (const entry of entries) {
+        if (ignoreList.has(entry.name)) continue;
+        const fullPath = path.join(dir, entry.name);
+        const relZipPath = zipSubPath ? `${zipSubPath}/${entry.name}` : entry.name;
+        if (entry.isDirectory()) {
+          addFilesRecursively(fullPath, relZipPath);
+        } else if (entry.isFile()) {
+          try {
+            const fileBuf = fs.readFileSync(fullPath);
+            zip.addFile(relZipPath, fileBuf);
+          } catch (readErr) {
+            console.warn('Skipping file in project export:', fullPath, readErr.message);
+          }
+        }
+      }
+    };
+
+    addFilesRecursively(rootDir);
+
+    const zipBuffer = zip.toBuffer();
+    res.setHeader('Content-Type', 'application/zip');
+    res.setHeader(
+      'Content-Disposition',
+      'attachment; filename="ian-tapia-reyes-web-pageproject.zip"'
+    );
+    res.setHeader('Content-Length', zipBuffer.length);
+    return res.send(zipBuffer);
+  } catch (err) {
+    console.error('Error creating project zip:', err);
+    return res.status(500).json({ error: 'Failed to create project ZIP archive.' });
+  }
+});
+
 // POST /api/upload-featured-video - Upload/replace football O-Line video
 app.post(
   '/api/upload-featured-video',

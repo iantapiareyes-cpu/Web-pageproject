@@ -1491,9 +1491,12 @@ function initSavedMediaVault() {
             <span class="media-saved-indicator"><span class="saved-dot"></span> Permanent Server Disk Active</span>
           </div>
 
-          <div class="media-vault-actions">
+          <div class="media-vault-actions" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
             <a href="/api/download-all-media" class="btn-zip-download" id="downloadAllZipBtn" download="Ian-Tapia-Reyes-Pictures-and-Videos.zip" title="Download all pictures and videos in one ZIP archive">
-              <span>📦 Save / Download All (ZIP)</span>
+              <span>📦 Save Media (ZIP)</span>
+            </a>
+            <a href="/api/download-project-zip" class="btn-zip-download" style="background: rgba(37, 99, 235, 0.25); border-color: #3b82f6;" id="downloadProjectZipBtn" download="ian-tapia-reyes-web-pageproject.zip" title="Download entire web page presentation project code and assets in one ZIP archive">
+              <span>📁 Export Presentation (ZIP)</span>
             </a>
           </div>
         </div>
